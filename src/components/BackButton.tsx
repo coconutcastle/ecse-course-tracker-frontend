@@ -5,10 +5,10 @@ export const BackButton = () => {
 
   return (
     <button
-    className="backButton"
+    className="back-button"
     onClick={() => { navigate(-1) }}>
-      <div className="buttonText" style={{ marginRight: '20px' }}>{'< <'}</div>
-      <div className="buttonText">BACK</div>
+      <div className="button-text" style={{ marginRight: '20px' }}>{'< <'}</div>
+      <div className="button-text">BACK</div>
     </button>
   )
 }

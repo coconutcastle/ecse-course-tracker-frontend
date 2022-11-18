@@ -1,36 +1,58 @@
 import { useNavigate } from "react-router-dom"
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 
+interface LoginFormFields {
+  email: string;
+  password: string;
+}
+
 export const LoginPage = () => {
   const navigate = useNavigate();
 
+  const validateFields = (values: LoginFormFields) => {
+    const errors: Record<string, string> = {};
+
+    if (values.email.length <= 0) {
+      errors['email'] = 'This field cannot be empty!'
+    };
+    if (values.password.length <= 0) {
+      errors['password'] = 'This field cannot be empty!'
+    };
+    
+    if (Object.keys(errors).length > 0) {
+      return errors;
+    }
+  }
+
   return (
-    <div className="pageContent">
+    <div className="page-content">
       <div className="title">MCGILL UNIVERSITY</div>
       <div className="title" style={{ marginTop: '-30px' }}>ECSE DEGREE VISUALIZER</div>
-      <div className="titleSecondary">LOGIN</div>
       <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
         email: '',
         password: ''
       }}
-      onSubmit={() => {}}>
-        <Form>
-          <Field name='firstName' type='text' />
-          <Field name='lastName' type='text' />
-          <Field name='email' type='text' />
-          <Field name='password' type='text' />
+      validate={validateFields}
+      onSubmit={() => {navigate('/visualizer')}}>
 
-          <div className="mt-5">
-            <button className="landingButton" type='submit'>
-              <div className="buttonText">
-                LOGIN
-              </div>
-            </button>
-          </div>
-        </Form>
+        {({ errors, touched }) => (
+          <Form className="login-form">
+            <Field name='email' type='text' placeholder="Email" className="text-field" />
+            <ErrorMessage name="email" className="text-field-error" component="div" />
+
+            <Field name='password' type='text' placeholder="Password" className="text-field" />
+            <ErrorMessage name="password" className="text-field-error" component="div" />
+
+            <div className="mt-5">
+              <button className="landing-button" type='submit'>
+                <div className="button-text">
+                  LOGIN
+                </div>
+              </button>
+            </div>
+          </Form>
+        )}
       </Formik>
     </div>
   )
