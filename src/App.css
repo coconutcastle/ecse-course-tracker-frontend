@@ -29,6 +29,20 @@ body {
   padding: 30px;
 }
 
+::-webkit-scrollbar {
+  width: 0px;
+  background: black; /* make scrollbar transparent */
+  opacity: 50%;
+  width: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: #58406b; /* make scrollbar transparent */
+  opacity: 50%;
+  width: 10px;
+}
+
 
 /* =================== LOGIN/CREATE ACCOUNT FORMS =================== */
 

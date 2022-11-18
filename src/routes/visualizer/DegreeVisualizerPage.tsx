@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Progress } from 'reactstrap';
+import { BackButton } from '../../components/BackButton';
 import { Calendar } from './Calendar';
 
 export const DegreeVisualizerPage = () => {
@@ -9,12 +10,13 @@ export const DegreeVisualizerPage = () => {
     <>
       <div className="page-content">
         <div className="title">DEGREE VISUALIZER</div>
+        <BackButton />
       </div>
       <div className="visualizer-page">
         <div className="visualizer-header">
           <button className="landing-button" onClick={() => navigate('/programs')}>
             <div className="button-text">
-              Program Requirements
+              VIEW PROGRAMS
             </div>
           </button>
           <div className='col-5 ms-5'>
