@@ -2,6 +2,11 @@ import { useNavigate } from "react-router-dom"
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { BackButton } from '../components/BackButton';
 
+interface CreateAccountPageProps {
+  setIsLoggedIn: (newLoggedIn: boolean) => void;
+}
+
+
 interface CreateAccountFormFields {
   firstName: string;
   lastName: string;
@@ -9,7 +14,7 @@ interface CreateAccountFormFields {
   password: string;
 }
 
-export const CreateAccountPage = () => {
+export const CreateAccountPage = ({ setIsLoggedIn }: CreateAccountPageProps) => {
   const navigate = useNavigate();
 
   const validateFields = (values: CreateAccountFormFields) => {
@@ -46,7 +51,10 @@ export const CreateAccountPage = () => {
           password: ''
         }}
         validate={validateFields}
-        onSubmit={() => { navigate('/visualizer') }}>
+        onSubmit={() => { 
+          setIsLoggedIn(true);
+          navigate('/visualizer');
+          }}>
 
         {({ errors, touched }) => (
           <Form className="login-form">

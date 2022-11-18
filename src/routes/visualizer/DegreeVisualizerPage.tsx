@@ -25,7 +25,6 @@ export const DegreeVisualizerPage = () => {
           </div>
         </div>
         <Calendar />
-
       </div>
     </>
   )

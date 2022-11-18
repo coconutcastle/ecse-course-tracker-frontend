@@ -65,6 +65,35 @@ body {
   color: #8F83A0;
 }
 
+/* =================== Side Menu =================== */
+
+.side-menu {
+  width: 400px;
+  height: 100%;
+  background-color: #8f78a2;
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  left: -400px;
+  transition-property: left;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+}
+
+.hide-screen {
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: white;
+  opacity: 0.6;
+  transition-property: all;
+  transition-duration: 0.6s;
+  transition-timing-function: ease;
+}
+
 
 /* =================== BUTTONS =================== */
 
@@ -102,6 +131,20 @@ body {
   border-radius: 5px;
   border: none;
   background-color: #8f78a2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  justify-self: center;
+}
+
+.menu-button {
+  width: 350px;
+  height: 60px;
+  margin-top: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: 'white';
   display: flex;
   align-items: center;
   justify-content: center;

@@ -2,12 +2,16 @@ import { useNavigate } from "react-router-dom"
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { BackButton } from '../components/BackButton';
 
+interface LoginPageProps {
+  setIsLoggedIn: (newLoggedIn: boolean) => void;
+}
+
 interface LoginFormFields {
   email: string;
   password: string;
 }
 
-export const LoginPage = () => {
+export const LoginPage = ({ setIsLoggedIn }: LoginPageProps) => {
   const navigate = useNavigate();
 
   const validateFields = (values: LoginFormFields) => {
@@ -36,8 +40,10 @@ export const LoginPage = () => {
         password: ''
       }}
       validate={validateFields}
-      onSubmit={() => {navigate('/visualizer')}}>
-
+      onSubmit={() => {
+        setIsLoggedIn(true);
+        navigate('/visualizer');
+        }}>
         {({ errors, touched }) => (
           <Form className="login-form">
             <Field name='email' type='text' placeholder="Email" className="text-field" />
