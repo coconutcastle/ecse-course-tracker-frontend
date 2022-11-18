@@ -5,6 +5,7 @@ import { CreateAccountPage } from './routes/CreateAccountPage';
 import { LoginPage } from './routes/LoginPage';
 import { MajorsAndMinorsPage } from './routes/MajorsAndMinorsPage';
 import { DegreeVisualizerPage } from './routes/DegreeVisualizerPage';
+import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
 const App: React.FC = () => {
