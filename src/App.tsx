@@ -10,7 +10,7 @@ import './App.css'
 const App: React.FC = () => {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter> 
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
