@@ -4,7 +4,7 @@ import { LandingPage } from './routes/LandingPage';
 import { CreateAccountPage } from './routes/CreateAccountPage';
 import { LoginPage } from './routes/LoginPage';
 import { MajorsAndMinorsPage } from './routes/MajorsAndMinorsPage';
-import { DegreeVisualizerPage } from './routes/DegreeVisualizerPage';
+import { DegreeVisualizerPage } from './routes/visualizer/DegreeVisualizerPage';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 

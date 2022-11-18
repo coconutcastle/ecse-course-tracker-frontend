@@ -1,6 +1,5 @@
 import { BackButton } from "../components/BackButton";
 
-
 export const MajorsAndMinorsPage = () => {
   return (
     <div className="page-content">

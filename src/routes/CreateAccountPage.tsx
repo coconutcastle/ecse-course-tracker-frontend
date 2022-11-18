@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import { Field, Form, Formik, ErrorMessage } from 'formik';
+import { BackButton } from '../components/BackButton';
 
 interface CreateAccountFormFields {
   firstName: string;
@@ -36,6 +37,7 @@ export const CreateAccountPage = () => {
     <div className="page-content">
       <div className="title">MCGILL UNIVERSITY</div>
       <div className="title" style={{ marginTop: '-30px' }}>ECSE DEGREE VISUALIZER</div>
+      <BackButton />
       <Formik
         initialValues={{
           firstName: '',
