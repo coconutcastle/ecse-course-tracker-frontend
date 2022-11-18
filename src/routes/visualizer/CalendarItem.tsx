@@ -22,7 +22,7 @@ export const CalendarItem = ({ season, year, courses, index}: CalendarItemProps)
         setIsOpen(!isOpen);
         }}>
         <div>{`${season} ${year}`}</div>
-        <div style={{ fontSize: '12px', fontWeight: 300, marginLeft: '5%', marginRight: '25%' }}>{'17 credits'}</div>
+        <div style={{ fontSize: '12px', fontWeight: 300, marginLeft: '5%', marginRight: '25%' }}>{`${17 - index} credits`}</div>
         {isOpen ? <GoTriangleDown /> : <GoTriangleUp />}
       </div>
       {(!isOpen && siblingIsOpen) && (
@@ -33,6 +33,7 @@ export const CalendarItem = ({ season, year, courses, index}: CalendarItemProps)
           {courses.map((course: CourseInfo, index) => 
             <button key={index} className="calendar-item-course-item-small">{`${course.department} ${course.code}`}</button>
           )}
+          <button key={index} className="calendar-item-course-item-small" style={{ color: 'white', backgroundColor: 'black'}}>+ ADD COURSE</button>
         </div>
       )}
     </div>
