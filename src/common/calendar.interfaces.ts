@@ -15,15 +15,23 @@ export enum Departments {
   COMP
 }
 
+export enum CourseFor {
+  REQUIRED,
+  TECHNICAL_COMPLEMENTARY,
+  SOCIALS_COMPLEMENTARY,
+  ELECTIVE,
+  MINOR
+}
+
 export interface CourseInfo {
   department: Departments;
   code: number;
   title: string;
   credits: number;
-  prereqs: CourseInfo[];
+  prereqs: {
+    required: CourseInfo[];
+    alternative: CourseInfo[];
+  };
   state: 'completed' | 'in progress' | 'failed' | 'incomplete';
-  isRequired: boolean;
-  isTechnicalComplementary: boolean;
-  isSocialsComplementary: boolean;
-  isElective: boolean;
+  for: CourseFor;
 }

@@ -1,0 +1,99 @@
+{
+  "test1": {
+    "season": "WINTER",
+    "year": "2021",
+    "courses": [
+      {
+        "department": "ECSE",
+        "code": 202,
+        "title": "Introduction to Programming",
+        "credits": 3,
+        "prereqs": [],
+        "state": "completed",
+        "for": "REQUIRED"
+      },
+      {
+        "department": "FACC",
+        "code": 100,
+        "title": "Introduction to the Engineering Progession",
+        "credits": 1,
+        "prereqs": [],
+        "state": "completed",
+        "for": "REQUIRED"
+      },
+      {
+        "department": "PHYS",
+        "code": 142,
+        "title": "Electromagnetism and Optics",
+        "credits": 4,
+        "prereqs": [],
+        "state": "failed",
+        "for": "REQUIRED"
+      }
+    ]
+  },
+  "test2": {
+    "season": "SUMMER",
+    "year": "2021",
+    "courses": [
+      {
+        "department": "MATH",
+        "code": 141,
+        "title": "Calculus 2",
+        "credits": 4,
+        "prereqs": [
+          {
+            "department": "MATH",
+            "code": 140,
+            "title": "Calculus 1",
+            "credits": 3,
+            "prereqs": [],
+            "state": "completed",
+            "for": "REQUIRED"
+          }
+        ],
+        "state": "completed",
+        "for": "REQUIRED"
+      }
+    ]
+  },
+  "test3": {
+    "season": "FALL",
+    "year": "2021",
+    "courses": [
+        {
+          "department": "PHYS",
+          "code": 142,
+          "title": "Electromagnetism and Optics",
+          "credits": 4,
+          "prereqs": [],
+          "state": "completed",
+          "for": "REQUIRED"
+        }
+    ]
+  },
+  "test4": {
+    "season": "WINTER",
+    "year": "2022",
+    "courses": [
+        {
+          "department": "ECSE",
+          "code": 205,
+          "title": "Probability and Stats for Engineers",
+          "credits": 3,
+          "prereqs": [],
+          "state": "in progress",
+          "for": "REQUIRED"
+        },
+        {
+          "department": "FACC",
+          "code": 400,
+          "title": "Engineering Progessional Practice",
+          "credits": 0,
+          "prereqs": [],
+          "state": "in progress",
+          "for": "REQUIRED"
+        }
+    ]
+  }
+}
