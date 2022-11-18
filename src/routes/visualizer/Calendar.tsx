@@ -38,6 +38,14 @@ export const Calendar = () => {
         index={index}
         />
       )}
+      <div className='ms-3'>
+        <button className="degree-button">
+          <div className="button-text">
+            + ADD SEMESTER
+          </div>
+        </button>
+      </div>
+      
     </div>
   )
 }

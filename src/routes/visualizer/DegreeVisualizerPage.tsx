@@ -1,7 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import { Progress } from 'reactstrap';
 import { Calendar } from './Calendar';
 
 export const DegreeVisualizerPage = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="page-content">
@@ -9,7 +12,7 @@ export const DegreeVisualizerPage = () => {
       </div>
       <div className="visualizer-page">
         <div className="visualizer-header">
-          <button className="landing-button">
+          <button className="landing-button" onClick={() => navigate('/programs')}>
             <div className="button-text">
               Program Requirements
             </div>
@@ -25,6 +28,14 @@ export const DegreeVisualizerPage = () => {
           </div>
         </div>
         <Calendar />
+        <div className='d-flex flex-column align-items-center' style={{ marginTop: '40px' }}>
+          <button className="landing-button">
+            <div className="button-text">
+              SAVE
+            </div>
+          </button>
+        </div>
+        
       </div>
     </>
   )
