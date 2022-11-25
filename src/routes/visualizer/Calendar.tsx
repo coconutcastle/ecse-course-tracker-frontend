@@ -10,20 +10,11 @@ export const Calendar = () => {
   const [openTabs, setOpenTabs] = useState<boolean[]>(Array(Object.values(semesters).length).fill(false));
   const [siblingsOpen, setSiblingsOpen] = useState<boolean[]>(Array(Object.values(semesters).length).fill(false));
   
-  // const updateOpenTabs = (index: number) => {
-  //   var newTabs = [...openTabs];
-  //   newTabs[index] = !newTabs[index];
-  //   if ((index % 3 === 0) && (openTabs[(index + 1) % 3] === true)) {
-  //     if(openTabs.slice(index, index + 3).inc)
-  //   }
-  //   else if ((index % 3 === 1) && ((openTabs[(index + 1) % 3] === true) || (openTabs[(index - 1) % 3] === true))) {
-  //     newTabs[index] = !newTabs[index];
-  //   }
-  //   else if (openTabs[(index - 1) % 3] === true) {
-  //     newTabs[index] = !newTabs[index];
-  //   }
-  //   setOpenTabs()
-  // }
+  const updateOpenTabs = (index: number) => {
+    const newOpenTabs = [...openTabs];
+    newOpenTabs.splice(index, 1, !newOpenTabs[index])
+    setOpenTabs(newOpenTabs);
+  }
 
   return (
     <div className='calendar-container'>
@@ -32,9 +23,9 @@ export const Calendar = () => {
         key={index} 
         season={semester.season} 
         year={semester.year} 
-        courses={semester.courses} 
-        // siblingIsOpen={siblingsOpen[index]}
-        // updateOpens={updateOpenTabs}
+        courses={semester.courses}
+        openTabs={openTabs}
+        updateOpenTabs={updateOpenTabs}
         index={index}
         />
       )}
