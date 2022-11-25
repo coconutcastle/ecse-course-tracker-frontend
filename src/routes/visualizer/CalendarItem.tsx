@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Seasons, CourseInfo } from '../../common/calendar.interfaces';
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/Go';
+import { MdDelete } from 'react-icons/md';
 
 interface CalendarItemProps {
   season: Seasons;
@@ -58,6 +59,11 @@ export const CalendarItem = ({ season, year, courses, index, openTabs, updateOpe
             <button key={index} className="calendar-item-course-item-small">{`${course.department} ${course.code}`}</button>
           )}
           <button key={index} className="calendar-item-course-item-small" style={{ color: 'white', backgroundColor: 'black'}}>+ ADD COURSE</button>
+          <button key={index} className="lowkey-button">
+            Delete Semester
+            <MdDelete 
+            className='ms-3 mb-1'/>
+          </button>
         </div>
       )}
     </div>

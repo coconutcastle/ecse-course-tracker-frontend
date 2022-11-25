@@ -166,6 +166,13 @@ body {
   justify-self: center;
 }
 
+.lowkey-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
 .button-text {
   color: white;
   font-family: 'Verdana';
@@ -175,6 +182,11 @@ body {
 
 button:hover {
   opacity: 70%;
+  transition: all .3s ease;
+}
+
+.lowkey-button:hover {
+  background-color: #8f78a2;
   transition: all .3s ease;
 }
 
