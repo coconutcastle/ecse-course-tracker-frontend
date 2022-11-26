@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Modal } from 'reactstrap';
 import { TfiClose } from 'react-icons/tfi';
+import { CourseInfo } from '../../common/calendar.interfaces';
 
-interface ProgramRequirementsModalProps {
+interface CourseInfoModalProps {
   isOpen: boolean;
   toggle: any;
+  course: CourseInfo;
 }
 
-export const ProgramRequirementsModal = ({ isOpen, toggle }: ProgramRequirementsModalProps) => {
+export const CourseInfoModal = ({ isOpen, toggle, course }: CourseInfoModalProps) => {
 
   return (
     <Modal
@@ -17,7 +19,7 @@ export const ProgramRequirementsModal = ({ isOpen, toggle }: ProgramRequirements
     size='lg'>
       <div className='p-3'>
         <div className='text-center title-secondary position-relative top-0 end-25'>
-          PROGRAM REQUIREMENTS
+          {`${course.department} ${course.code}`}
           <div className='position-relative float-end me-5'>
             <button
             style={{ height: '50px', 'width': '50px', borderRadius: '50%', position: 'fixed', backgroundColor: "black", zIndex: 2 }}

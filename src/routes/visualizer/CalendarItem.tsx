@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Seasons, CourseInfo } from '../../common/calendar.interfaces';
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/Go';
 import { MdDelete } from 'react-icons/md';
+import { CourseInfoModal } from './CourseInfoModal';
 
 interface CalendarItemProps {
   season: Seasons;
@@ -16,6 +17,8 @@ interface CalendarItemProps {
 export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, modifySemesters, index }: CalendarItemProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [siblingIsOpen, setSiblingIsOpen] = useState<boolean>(false);
+  const [isCourseInfoModalOpen, setIsCourseInfoModalOpen] = useState<boolean>(false);
+  const [selectedCourse, setSelectedCourse] = useState<CourseInfo | undefined>();
 
   console.log(season, year)
 
@@ -41,7 +44,7 @@ export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, 
       default:
         console.log('bad index')
     };
-  }, [openTabs])
+  }, [openTabs]);
 
   return (
     <div className='flex-column' style={{ width: '33%' }}>
@@ -58,8 +61,22 @@ export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, 
       )}
       {isOpen && (
         <div className="calendar-item-open">
-          {courses.map((course: CourseInfo, index) => 
-            <button key={index} className="calendar-item-course-item-small">{`${course.department} ${course.code}`}</button>
+          {courses.map((course: CourseInfo, index) => (
+            <>
+              <button key={index} 
+              className="calendar-item-course-item-small" 
+              onClick={() => {
+                setSelectedCourse(course);
+                setIsCourseInfoModalOpen(!isCourseInfoModalOpen);
+              }}>{`${course.department} ${course.code}`}</button>
+            </>
+          ))}
+          {selectedCourse && (
+            <CourseInfoModal 
+            isOpen={isCourseInfoModalOpen}
+            toggle={() => setIsCourseInfoModalOpen(!isCourseInfoModalOpen)}
+            course={selectedCourse}
+            />
           )}
           <button key={`${season}-${year}-add`} className="calendar-item-course-item-small" style={{ color: 'white', backgroundColor: 'black'}}>+ ADD COURSE</button>
           <button key={`${season}-${year}-delete`} className="lowkey-button" onClick={() => modifySemesters(index, true)}>
