@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Modal, ButtonGroup, Button, Input } from 'reactstrap';
+import { Modal, ButtonGroup, Button } from 'reactstrap';
 import { TfiClose } from 'react-icons/tfi';
 import { Seasons } from '../../common/calendar.interfaces';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
@@ -7,6 +7,8 @@ import { Field, Form, Formik, ErrorMessage } from 'formik';
 interface AddSemesterModalProps {
   isOpen: boolean;
   toggle: any;
+  numberSemesters: number;
+  modifySemesters: (index: number, isDelete: boolean, season?: Seasons, year?: number) => void;
 }
 
 interface AddSemesterModalFields {
@@ -14,13 +16,11 @@ interface AddSemesterModalFields {
   year: string;
 }
 
-export const AddSemesterModal = ({ isOpen, toggle }: AddSemesterModalProps) => {
-  const [seasonDropdownOpen, setSeasonDropdownOpen] = useState<boolean>(false);
-  const [selectedSeason, setSelectedSeason] = useState<Seasons | undefined>();
-  const [selectedYear, setSelectedYear] = useState<number | undefined>();
+export const AddSemesterModal = ({ isOpen, toggle, numberSemesters, modifySemesters }: AddSemesterModalProps) => {
 
   const validateFields = (values: AddSemesterModalFields) => {
     const errors: Record<string, string> = {};
+    console.log(values);
 
     if (!values.semester) {
       errors['semester'] = 'You must select a season!'
@@ -35,7 +35,7 @@ export const AddSemesterModal = ({ isOpen, toggle }: AddSemesterModalProps) => {
     if (Object.keys(errors).length > 0) {
       return errors;
     }
-  }
+  };
 
   return (
     <Modal
@@ -60,47 +60,49 @@ export const AddSemesterModal = ({ isOpen, toggle }: AddSemesterModalProps) => {
             year: ''
           }}
           validate={validateFields}
-          onSubmit={() => console.log('submitted')}>
-          {({ errors }) => (
+          onSubmit={(values: AddSemesterModalFields) => {
+            modifySemesters(numberSemesters, false, values.semester, parseInt(values.year));
+            toggle();
+          }}>
+          {({ values, setFieldValue }) => (
             <Form>
               <div className='d-flex flex-column justify-content-center align-items-center'>
                 <div className='p-2 mb-4'>
                   <div className='text-center mb-2' style={{ fontSize: '20px', fontWeight: 300 }}>
                     SEASON
                   </div>
-                  <Field name='semester'>
-                    <ButtonGroup>
-                      <Button
-                        className='p-2'
-                        style={{ backgroundColor: '#9E86B1', border: 'none', opacity: selectedSeason === Seasons.FALL ? '70%' : '100%' }}
-                        onClick={() => setSelectedSeason(Seasons.FALL)}>
-                        <div className='button-text'>FALL</div>
-                      </Button>
-                      <Button
-                        className='p-2'
-                        style={{ backgroundColor: '#9E86B1', border: 'none' }}
-                        onClick={() => setSelectedSeason(Seasons.WINTER)}>
-                        <div className='button-text'>WINTER</div>
-                      </Button>
-                      <Button
-                        className='p-2'
-                        style={{ backgroundColor: '#9E86B1', border: 'none' }}
-                        onClick={() => setSelectedSeason(Seasons.SUMMER)}>
-                        <div className='button-text'>SUMMER</div>
-                      </Button>
-                    </ButtonGroup>
-                  </Field>
-                  
+                  <ButtonGroup>
+                    <Button
+                      className='p-2'
+                      style={{ backgroundColor: '#9E86B1', border: 'none', opacity: values.semester === Seasons[Seasons.FALL] ? '70%' : '100% ' }}
+                      on
+                      onClick={() => setFieldValue('semester', Seasons[Seasons.FALL])}>
+                      <div className='button-text'>FALL</div>
+                    </Button>
+                    <Button
+                      className='p-2'
+                      style={{ backgroundColor: '#9E86B1', border: 'none', opacity: values.semester === Seasons[Seasons.WINTER] ? '70%' : '100% ' }}
+                      onClick={() => setFieldValue('semester', Seasons[Seasons.WINTER])}>
+                      <div className='button-text'>WINTER</div>
+                    </Button>
+                    <Button
+                      className='p-2'
+                      style={{ backgroundColor: '#9E86B1', border: 'none', opacity: values.semester === Seasons[Seasons.SUMMER] ? '70%' : '100% ' }}
+                      onClick={() => setFieldValue('semester', Seasons[Seasons.SUMMER])}>
+                      <div className='button-text'>SUMMER</div>
+                    </Button>
+                  </ButtonGroup>
                 </div>
                 <div className='p-2'>
                   <div className='text-center mb-2' style={{ fontSize: '20px', fontWeight: 300 }}>
                     YEAR
                   </div>
-                  <Input className='course-input-text' type='text'></Input>
+                  <Field name='year' className='course-input-text' type='text' />
+                  <ErrorMessage name="year" className="text-field-error" component="div" />
                 </div>
               </div>
               <div className='d-flex flex-column align-items-center mb-4' style={{ marginTop: '40px' }}>
-                <button className='landing-button'>
+                <button className='landing-button' type='submit'>
                   <div className="button-text">
                     ADD
                   </div>
@@ -108,46 +110,6 @@ export const AddSemesterModal = ({ isOpen, toggle }: AddSemesterModalProps) => {
               </div>
             </Form>
           )}
-          {/* <div className='d-flex flex-column justify-content-center align-items-center'>
-            <div className='p-2 mb-4'>
-              <div className='text-center mb-2' style={{ fontSize: '20px', fontWeight: 300 }}>
-                SEASON
-              </div>
-              <ButtonGroup>
-                <Button 
-                className='p-2' 
-                style={{ backgroundColor: '#9E86B1', border: 'none', opacity: selectedSeason === Seasons.FALL ? '70%' : '100%' }} 
-                onClick={() => setSelectedSeason(Seasons.FALL)}>
-                  <div className='button-text'>FALL</div>
-                </Button>
-                <Button 
-                className='p-2' 
-                style={{ backgroundColor: '#9E86B1', border: 'none' }} 
-                onClick={() => setSelectedSeason(Seasons.WINTER)}>
-                  <div className='button-text'>WINTER</div>
-                </Button>
-                <Button 
-                className='p-2' 
-                style={{ backgroundColor: '#9E86B1', border: 'none' }} 
-                onClick={() => setSelectedSeason(Seasons.SUMMER)}>
-                  <div className='button-text'>SUMMER</div>
-                </Button>
-              </ButtonGroup>
-            </div>
-            <div className='p-2'>
-              <div className='text-center mb-2' style={{ fontSize: '20px', fontWeight: 300 }}>
-                YEAR
-              </div>
-              <Input className='course-input-text' type='text'></Input>
-            </div>
-          </div>
-        <div className='d-flex flex-column align-items-center mb-4' style={{ marginTop: '40px' }}>
-          <button className='landing-button'>
-            <div className="button-text">
-              ADD
-            </div>
-          </button>
-        </div> */}
         </Formik>
       </div>
     </Modal>

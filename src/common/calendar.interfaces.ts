@@ -37,7 +37,7 @@ export interface CourseInfo {
 }
 
 export interface SemesterInfo {
-  semester: Seasons;
+  season: Seasons;
   year: number;
   courses: CourseInfo[];
 }

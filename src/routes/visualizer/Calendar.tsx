@@ -22,8 +22,8 @@ export const Calendar = () => {
     if (isDelete) {
       newSemesters.splice(index, 1)
     } else if (season && year) {
-      newSemesters.splice(semesters.length, 1, {
-        semester: season,
+      newSemesters.splice(semesters.length, 0, {
+        season: season,
         year: year,
         courses: []
       });
@@ -31,9 +31,11 @@ export const Calendar = () => {
     setSemesters(newSemesters);
   };
 
+  console.log(semesters)
+
   return (
     <div className='calendar-container'>
-      {semesters.map((semester: any, index) => 
+      {semesters.map((semester: SemesterInfo, index) => 
         <CalendarItem 
         key={index} 
         season={semester.season} 
@@ -54,6 +56,8 @@ export const Calendar = () => {
         <AddSemesterModal
         isOpen={isAddSemesterModalOpen}
         toggle={() => setIsAddSemesterModalOpen(!isAddSemesterModalOpen)}
+        numberSemesters={semesters.length}
+        modifySemesters={modifySemesters}
         />
       </div>
       

@@ -181,12 +181,7 @@ body {
 }
 
 button:hover {
-  opacity: 70%;
-  transition: all .3s ease;
-}
-
-Button:hover {
-  opacity: 70%;
+  opacity: 70% !important;
   transition: all .3s ease;
 }
 

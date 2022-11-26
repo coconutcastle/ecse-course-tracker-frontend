@@ -1,7 +1,7 @@
 {
   "test1": {
     "season": "WINTER",
-    "year": "2021",
+    "year": 2021,
     "courses": [
       {
         "department": "ECSE",
@@ -34,7 +34,7 @@
   },
   "test2": {
     "season": "SUMMER",
-    "year": "2021",
+    "year": 2021,
     "courses": [
       {
         "department": "MATH",
@@ -59,7 +59,7 @@
   },
   "test3": {
     "season": "FALL",
-    "year": "2021",
+    "year": 2021,
     "courses": [
         {
           "department": "PHYS",
@@ -74,7 +74,7 @@
   },
   "test4": {
     "season": "WINTER",
-    "year": "2022",
+    "year": 2022,
     "courses": [
         {
           "department": "ECSE",

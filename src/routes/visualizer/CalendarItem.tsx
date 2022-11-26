@@ -17,6 +17,8 @@ export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, 
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [siblingIsOpen, setSiblingIsOpen] = useState<boolean>(false);
 
+  console.log(season, year)
+
   useEffect(() => {
     const columnPlace = index % 3;
     setSiblingIsOpen(false);
@@ -59,8 +61,8 @@ export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, 
           {courses.map((course: CourseInfo, index) => 
             <button key={index} className="calendar-item-course-item-small">{`${course.department} ${course.code}`}</button>
           )}
-          <button key={index} className="calendar-item-course-item-small" style={{ color: 'white', backgroundColor: 'black'}}>+ ADD COURSE</button>
-          <button key={index} className="lowkey-button" onClick={() => modifySemesters(index, true)}>
+          <button key={`${season}-${year}-add`} className="calendar-item-course-item-small" style={{ color: 'white', backgroundColor: 'black'}}>+ ADD COURSE</button>
+          <button key={`${season}-${year}-delete`} className="lowkey-button" onClick={() => modifySemesters(index, true)}>
             Delete Semester
             <MdDelete 
             className='ms-3 mb-1'/>
