@@ -6,6 +6,8 @@ import { LoginPage } from './routes/LoginPage';
 import { SideMenu } from './components/SideMenu';
 import { MajorsAndMinorsPage } from './routes/MajorsAndMinorsPage';
 import { DegreeVisualizerPage } from './routes/visualizer/DegreeVisualizerPage';
+import { ProfilePage } from './routes/ProfilePage';
+import { CurriculumPage } from './routes/CurriculumPage';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
@@ -21,6 +23,8 @@ const App: React.FC = () => {
         <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/create" element={<CreateAccountPage setIsLoggedIn={setIsLoggedIn}/>} />
         <Route path="/programs" element={<MajorsAndMinorsPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/curriculum" element={<CurriculumPage />} />
         <Route path="/visualizer" element={<DegreeVisualizerPage />} />
       </Routes>
     

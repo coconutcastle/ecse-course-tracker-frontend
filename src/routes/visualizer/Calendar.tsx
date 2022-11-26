@@ -32,7 +32,7 @@ export const Calendar = ({ semesters, modifySemesters }: CalendarProps) => {
         openTabs={openTabs}
         updateOpenTabs={updateOpenTabs}
         modifySemesters={modifySemesters}
-        index={index}
+        itemIndex={index}
         />
       )}
       <div className='ms-3'>

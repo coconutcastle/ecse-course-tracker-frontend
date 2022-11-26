@@ -32,7 +32,7 @@ export const SideMenu = ({ setIsLoggedIn }: SideMenuProps) => {
               VIEW MAJORS & MINORS
             </div>
           </button>
-          <button className='menu-button' onClick={() => navigate('/visualizer')}>
+          <button className='menu-button' onClick={() => navigate('/profile')}>
             <div className='button-text' style={{ color: 'black' }}>
               PROFILE
             </div>

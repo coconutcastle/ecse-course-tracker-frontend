@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Modal } from 'reactstrap';
 import { TfiClose } from 'react-icons/tfi';
-import { CourseInfo, CourseFor, CourseForText, CourseStateText } from '../../common/calendar.interfaces';
+import { CourseInfo, CourseType, CourseStateText, CourseTypeText } from '../../common/calendar.interfaces';
 
 interface CourseInfoModalProps {
   isOpen: boolean;
@@ -10,7 +10,6 @@ interface CourseInfoModalProps {
 }
 
 export const CourseInfoModal = ({ isOpen, toggle, course }: CourseInfoModalProps) => {
-  console.log(course)
   return (
     <Modal
     isOpen={isOpen}
@@ -38,13 +37,13 @@ export const CourseInfoModal = ({ isOpen, toggle, course }: CourseInfoModalProps
         </div>
         <div className='row p-3'>
           <div className='course-info-text fw-bold col-3'>Type: </div>
-          <div className='course-info-text col-9'>{Object.values(CourseForText)[parseInt(CourseFor[course.for])]}</div>
+          <div className='course-info-text col-9'>{CourseTypeText[course.type]}</div>
         </div>
         <div className='row p-3'>
           <div className='course-info-text fw-bold col-3'>Prerequisites: </div>
           <div className='course-info-text col-9'>{
-            [...course.prereqs.required, ...course.prereqs.alternative].map((prereq: CourseInfo) => 
-            <div>{`${prereq.department} ${prereq.code}`}</div>)
+            [...course.prereqs.required, ...course.prereqs.alternative].map((prereq: CourseInfo, index) => 
+            <div key={index}>{`${prereq.department} ${prereq.code}`}</div>)
           }</div>
         </div>
         <div className='row p-3'>

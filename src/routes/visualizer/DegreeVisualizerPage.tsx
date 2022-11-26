@@ -4,7 +4,8 @@ import courseData from '../../prototype/calendarItems.json'
 import { BackButton } from '../../components/BackButton';
 import { Calendar } from './Calendar';
 import { ProgramRequirementsModal } from './ProgramRequirementsModal';
-import { SemesterInfo, Seasons, CourseInfo } from '../../common/calendar.interfaces';
+import { SemesterInfo, Seasons, CourseInfo, CourseState, CourseStateText } from '../../common/calendar.interfaces';
+import { MdCheckCircle } from 'react-icons/md';
 
 export const DegreeVisualizerPage = () => {
   const [semesters, setSemesters] = useState<SemesterInfo[]>(Object.values(JSON.parse(JSON.stringify(courseData))));
@@ -30,12 +31,11 @@ export const DegreeVisualizerPage = () => {
     var credits = 0;
     semesters.forEach((semester: SemesterInfo) => {
       semester.courses.forEach((course: CourseInfo) => {
-        if (course.state === 'completed') {
+        if (CourseStateText[course.state] === CourseStateText.COMPLETED) {
           credits += course.credits;
         }
       });
     });
-    console.log((credits/140)*100)
     setAccumulatedCredits(credits)
   }, [semesters])
 
@@ -69,12 +69,25 @@ export const DegreeVisualizerPage = () => {
           </div>
         </div>
         <Calendar semesters={semesters} modifySemesters={modifySemesters}/>
-        <div className='d-flex flex-column align-items-center' style={{ marginTop: '40px' }}>
-          <button className="landing-button">
+        <div className='d-flex flex-row justify-content-center align-items-center' style={{ marginTop: '40px' }}>
+          <button className="landing-button"
+          onClick={() => {
+            const check = document.getElementById("save-confirmation-check");
+            if (check) {
+              check.style.opacity = '100%';
+              setTimeout(() => {
+                check.style.opacity = '0%';
+              }, 2000);
+            };
+          }}>
             <div className="button-text">
               SAVE
             </div>
           </button>
+          <MdCheckCircle 
+          id="save-confirmation-check"
+          style={{ opacity: '0%' }}
+          />
         </div>
         
       </div>

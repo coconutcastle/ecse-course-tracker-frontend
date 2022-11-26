@@ -15,13 +15,23 @@ export enum Departments {
   COMP
 }
 
-export enum CourseFor {
-  REQUIRED,
-  TECHNICAL_COMPLEMENTARY,
-  SOCIALS_COMPLEMENTARY,
-  ELECTIVE,
-  MINOR
+export const CourseTypeText = {
+  REQUIRED: 'Required',
+  TECHNICAL_COMPLEMENTARY: 'Technical Complementary',
+  SOCIALS_COMPLEMENTARY: 'Humanities Complementary',
+  ELECTIVE: 'Elective',
+  MINOR: 'Minor'
 }
+
+export const CourseStateText = {
+  COMPLETED: 'Completed',
+  IN_PROGRESS: 'In Progress',
+  FAILED: 'Failed',
+  INCOMPLETE: 'Incomplete'
+}
+
+export type CourseType = keyof typeof CourseTypeText;
+export type CourseState = keyof typeof CourseStateText;
 
 export interface CourseInfo {
   department: Departments;
@@ -32,27 +42,12 @@ export interface CourseInfo {
     required: CourseInfo[];
     alternative: CourseInfo[];
   };
-  state: 'completed' | 'in progress' | 'failed' | 'incomplete';
-  for: CourseFor;
+  state: CourseState;
+  type: CourseType;
 }
 
 export interface SemesterInfo {
   season: Seasons;
   year: number;
   courses: CourseInfo[];
-}
-
-export const CourseForText: Record<CourseFor, string> = {
-  [CourseFor.REQUIRED]: 'Required',
-  [CourseFor.TECHNICAL_COMPLEMENTARY]: 'Technical Complementary',
-  [CourseFor.SOCIALS_COMPLEMENTARY]: 'Humanities Complementary',
-  [CourseFor.ELECTIVE]: 'Elective',
-  [CourseFor.MINOR]: 'Minor'
-}
-
-export const CourseStateText = {
-  'completed': 'Completed',
-  'in progress': 'In Progress',
-  'failed': 'Failed',
-  'incomplete': 'Incomplete'
 }
