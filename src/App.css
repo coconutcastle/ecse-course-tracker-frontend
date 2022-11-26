@@ -185,6 +185,11 @@ button:hover {
   transition: all .3s ease;
 }
 
+Button:hover {
+  opacity: 70%;
+  transition: all .3s ease;
+}
+
 .lowkey-button:hover {
   background-color: #8f78a2;
   transition: all .3s ease;
@@ -261,4 +266,13 @@ button:hover {
 .requirements-modal {
   /* height: 1600px;
   width: 800px; */
+}
+
+.course-input-text {
+  border-radius: 7px;
+}
+
+.course-input-text:focus {
+  border-color: #c6afd8;
+  box-shadow: 0 0 0 0.2rem #c6afd8;
 }

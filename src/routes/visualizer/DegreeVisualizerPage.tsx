@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Progress } from 'reactstrap';
 import { BackButton } from '../../components/BackButton';
 import { Calendar } from './Calendar';
-import { ProgramRequirementsModal } from '../ProgramRequirementsModal';
+import { ProgramRequirementsModal } from './ProgramRequirementsModal';
 
 export const DegreeVisualizerPage = () => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -11,10 +11,6 @@ export const DegreeVisualizerPage = () => {
 
   return (
     <>
-      <ProgramRequirementsModal 
-      isOpen={isModalOpen}
-      toggle={() => setIsModalOpen(!isModalOpen)}
-      />
       <div className="page-content">
         <div className="title">DEGREE VISUALIZER</div>
         <BackButton />
@@ -26,6 +22,10 @@ export const DegreeVisualizerPage = () => {
               VIEW REQUIREMENTS
             </div>
           </button>
+          <ProgramRequirementsModal 
+          isOpen={isModalOpen}
+          toggle={() => setIsModalOpen(!isModalOpen)}
+          />
           <div className='col-5 ms-5'>
             <Progress
             value={70}

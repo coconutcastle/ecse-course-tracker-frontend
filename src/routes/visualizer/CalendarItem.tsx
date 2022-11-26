@@ -9,10 +9,11 @@ interface CalendarItemProps {
   courses: CourseInfo[];
   openTabs: boolean[];
   updateOpenTabs: any;
+  modifySemesters: (index: number, isDelete: boolean, season?: Seasons, year?: number) => void;
   index: number;
 }
 
-export const CalendarItem = ({ season, year, courses, index, openTabs, updateOpenTabs }: CalendarItemProps) => {
+export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, modifySemesters, index }: CalendarItemProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [siblingIsOpen, setSiblingIsOpen] = useState<boolean>(false);
 
@@ -59,7 +60,7 @@ export const CalendarItem = ({ season, year, courses, index, openTabs, updateOpe
             <button key={index} className="calendar-item-course-item-small">{`${course.department} ${course.code}`}</button>
           )}
           <button key={index} className="calendar-item-course-item-small" style={{ color: 'white', backgroundColor: 'black'}}>+ ADD COURSE</button>
-          <button key={index} className="lowkey-button">
+          <button key={index} className="lowkey-button" onClick={() => modifySemesters(index, true)}>
             Delete Semester
             <MdDelete 
             className='ms-3 mb-1'/>

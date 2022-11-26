@@ -35,3 +35,9 @@ export interface CourseInfo {
   state: 'completed' | 'in progress' | 'failed' | 'incomplete';
   for: CourseFor;
 }
+
+export interface SemesterInfo {
+  semester: Seasons;
+  year: number;
+  courses: CourseInfo[];
+}
