@@ -271,3 +271,7 @@ button:hover {
   border-color: #c6afd8;
   box-shadow: 0 0 0 0.2rem #c6afd8;
 }
+
+.course-info-text {
+  font-size: 20px
+}

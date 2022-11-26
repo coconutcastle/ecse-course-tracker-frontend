@@ -41,3 +41,18 @@ export interface SemesterInfo {
   year: number;
   courses: CourseInfo[];
 }
+
+export const CourseForText: Record<CourseFor, string> = {
+  [CourseFor.REQUIRED]: 'Required',
+  [CourseFor.TECHNICAL_COMPLEMENTARY]: 'Technical Complementary',
+  [CourseFor.SOCIALS_COMPLEMENTARY]: 'Humanities Complementary',
+  [CourseFor.ELECTIVE]: 'Elective',
+  [CourseFor.MINOR]: 'Minor'
+}
+
+export const CourseStateText = {
+  'completed': 'Completed',
+  'in progress': 'In Progress',
+  'failed': 'Failed',
+  'incomplete': 'Incomplete'
+}

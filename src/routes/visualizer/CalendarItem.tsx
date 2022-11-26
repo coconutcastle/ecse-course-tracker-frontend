@@ -20,8 +20,6 @@ export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, 
   const [isCourseInfoModalOpen, setIsCourseInfoModalOpen] = useState<boolean>(false);
   const [selectedCourse, setSelectedCourse] = useState<CourseInfo | undefined>();
 
-  console.log(season, year)
-
   useEffect(() => {
     const columnPlace = index % 3;
     setSiblingIsOpen(false);

@@ -8,7 +8,10 @@
         "code": 202,
         "title": "Introduction to Programming",
         "credits": 3,
-        "prereqs": [],
+        "prereqs": {
+          "required": [],
+          "alternative": []
+        },
         "state": "completed",
         "for": "REQUIRED"
       },
@@ -17,7 +20,10 @@
         "code": 100,
         "title": "Introduction to the Engineering Progession",
         "credits": 1,
-        "prereqs": [],
+        "prereqs": {
+          "required": [],
+          "alternative": []
+        },
         "state": "completed",
         "for": "REQUIRED"
       },
@@ -26,7 +32,10 @@
         "code": 142,
         "title": "Electromagnetism and Optics",
         "credits": 4,
-        "prereqs": [],
+        "prereqs": {
+          "required": [],
+          "alternative": []
+        },
         "state": "failed",
         "for": "REQUIRED"
       }
@@ -41,17 +50,21 @@
         "code": 141,
         "title": "Calculus 2",
         "credits": 4,
-        "prereqs": [
-          {
+        "prereqs": {
+          "required": [{
             "department": "MATH",
             "code": 140,
             "title": "Calculus 1",
             "credits": 3,
-            "prereqs": [],
+            "prereqs": {
+              "required": [],
+              "alternative": []
+            },
             "state": "completed",
             "for": "REQUIRED"
-          }
-        ],
+          }],
+          "alternative": []
+        },
         "state": "completed",
         "for": "REQUIRED"
       }
@@ -66,7 +79,10 @@
           "code": 142,
           "title": "Electromagnetism and Optics",
           "credits": 4,
-          "prereqs": [],
+          "prereqs": {
+            "required": [],
+            "alternative": []
+          },
           "state": "completed",
           "for": "REQUIRED"
         }
@@ -81,7 +97,10 @@
           "code": 205,
           "title": "Probability and Stats for Engineers",
           "credits": 3,
-          "prereqs": [],
+          "prereqs": {
+            "required": [],
+            "alternative": []
+          },
           "state": "in progress",
           "for": "REQUIRED"
         },
@@ -90,7 +109,10 @@
           "code": 400,
           "title": "Engineering Progessional Practice",
           "credits": 0,
-          "prereqs": [],
+          "prereqs": {
+            "required": [],
+            "alternative": []
+          },
           "state": "in progress",
           "for": "REQUIRED"
         }
