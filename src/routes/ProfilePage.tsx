@@ -1,8 +1,7 @@
 import { BackButton } from "../components/BackButton";
-import { Majors } from "../common/user.interface";
+import { Majors } from "../common/calendar.interface";
 
 export const ProfilePage = () => {
-  console.log(Majors.COMPUTER)
   return (
     <div className="page-content">
       <div className="title">MAJORS & MINORS</div>

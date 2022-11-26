@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Seasons, CourseInfo } from '../../common/calendar.interfaces';
+import { Seasons, CourseInfo } from '../../common/calendar.interface';
 import { GoTriangleUp, GoTriangleDown } from 'react-icons/Go';
 import { MdDelete } from 'react-icons/md';
 import { CourseInfoModal } from './CourseInfoModal';
+import { AddCourseModal } from './AddCourseModal';
 
 interface CalendarItemProps {
   season: Seasons;
@@ -11,14 +12,16 @@ interface CalendarItemProps {
   openTabs: boolean[];
   updateOpenTabs: any;
   modifySemesters: (index: number, isDelete: boolean, season?: Seasons, year?: number) => void;
+  modifyCourse: (semesterIndex: number, isDelete: boolean, courseIndex: number, newCourse?: CourseInfo) => void;
   itemIndex: number;
 }
 
-export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, modifySemesters, itemIndex }: CalendarItemProps) => {
+export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, modifySemesters, modifyCourse, itemIndex }: CalendarItemProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [siblingIsOpen, setSiblingIsOpen] = useState<boolean>(false);
   const [isCourseInfoModalOpen, setIsCourseInfoModalOpen] = useState<boolean>(false);
   const [selectedCourse, setSelectedCourse] = useState<CourseInfo | undefined>();
+  const [isAddCourseModalOpen, setIsAddCourseModalOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const columnPlace = itemIndex % 3;
@@ -76,7 +79,19 @@ export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, 
             course={selectedCourse}
             />
           )}
-          <button key={`${season}-${year}-add`} className="calendar-item-course-item-small" style={{ color: 'white', backgroundColor: 'black'}}>+ ADD COURSE</button>
+          <button key={`${season}-${year}-add`} 
+          className="calendar-item-course-item-small" 
+          style={{ color: 'white', backgroundColor: 'black'}}
+          onClick={() => setIsAddCourseModalOpen(!isAddCourseModalOpen)}>
+            + ADD COURSE
+          </button>
+          <AddCourseModal 
+          isOpen={isAddCourseModalOpen}
+          toggle={() => setIsAddCourseModalOpen(!isAddCourseModalOpen)}
+          semesterIndex={itemIndex}
+          courseIndex={courses.length}
+          modifyCourse={modifyCourse}
+          />
           <button key={`${season}-${year}-delete`} className="lowkey-button" onClick={() => modifySemesters(itemIndex, true)}>
             Delete Semester
             <MdDelete 

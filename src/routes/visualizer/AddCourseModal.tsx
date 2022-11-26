@@ -1,24 +1,25 @@
 import { useState } from 'react';
 import { Modal, ButtonGroup, Button } from 'reactstrap';
 import { TfiClose } from 'react-icons/tfi';
-import { Seasons } from '../../common/calendar.interface';
+import { Seasons, CourseInfo } from '../../common/calendar.interface';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 
-interface AddSemesterModalProps {
+interface AddCourseModalProps {
   isOpen: boolean;
   toggle: any;
-  numberSemesters: number;
-  modifySemesters: (index: number, isDelete: boolean, season?: Seasons, year?: number) => void;
+  semesterIndex: number;
+  courseIndex: number;
+  modifyCourse: (semesterIndex: number, isDelete: boolean, courseIndex: number, newCourse?: CourseInfo) => void;
 }
 
-interface AddSemesterModalFields {
+interface AddCourseModalFields {
   semester: Seasons | undefined;
   year: string;
 }
 
-export const AddSemesterModal = ({ isOpen, toggle, numberSemesters, modifySemesters }: AddSemesterModalProps) => {
+export const AddCourseModal = ({ isOpen, toggle, semesterIndex, courseIndex, modifyCourse }: AddCourseModalProps) => {
 
-  const validateFields = (values: AddSemesterModalFields) => {
+  const validateFields = (values: AddCourseModalFields) => {
     const errors: Record<string, string> = {};
     console.log(values);
 
@@ -60,8 +61,8 @@ export const AddSemesterModal = ({ isOpen, toggle, numberSemesters, modifySemest
             year: ''
           }}
           validate={validateFields}
-          onSubmit={(values: AddSemesterModalFields) => {
-            modifySemesters(numberSemesters, false, values.semester, parseInt(values.year));
+          onSubmit={(values: AddCourseModalFields) => {
+            modifyCourse(semesterIndex, false, courseIndex)
             toggle();
           }}>
           {({ values, setFieldValue }) => (

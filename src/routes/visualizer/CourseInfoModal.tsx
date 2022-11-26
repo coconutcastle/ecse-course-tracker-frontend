@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Modal } from 'reactstrap';
 import { TfiClose } from 'react-icons/tfi';
-import { CourseInfo, CourseType, CourseStateText, CourseTypeText } from '../../common/calendar.interfaces';
+import { CourseInfo, CourseType, CourseStateText, CourseTypeText } from '../../common/calendar.interface';
 
 interface CourseInfoModalProps {
   isOpen: boolean;

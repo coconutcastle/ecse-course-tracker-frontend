@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Seasons, SemesterInfo, CourseInfo } from "../../common/calendar.interfaces";
+import { Seasons, SemesterInfo, CourseInfo } from "../../common/calendar.interface";
 import { CalendarItem } from "./CalendarItem";
 import { useQuery } from 'react-query';
 import { AddSemesterModal } from './AddSemesterModal';
@@ -7,9 +7,10 @@ import { AddSemesterModal } from './AddSemesterModal';
 interface CalendarProps {
   semesters: SemesterInfo[];
   modifySemesters: (index: number, isDelete: boolean, season?: Seasons, year?: number) => void;
+  modifyCourse: (semesterIndex: number, isDelete: boolean, courseIndex: number, newCourse?: CourseInfo) => void;
 }
 
-export const Calendar = ({ semesters, modifySemesters }: CalendarProps) => {
+export const Calendar = ({ semesters, modifySemesters, modifyCourse }: CalendarProps) => {
   const [openTabs, setOpenTabs] = useState<boolean[]>(Array(Object.values(semesters).length).fill(false));
   const [isAddSemesterModalOpen, setIsAddSemesterModalOpen] = useState<boolean>(false);
   
@@ -32,6 +33,7 @@ export const Calendar = ({ semesters, modifySemesters }: CalendarProps) => {
         openTabs={openTabs}
         updateOpenTabs={updateOpenTabs}
         modifySemesters={modifySemesters}
+        modifyCourse={modifyCourse}
         itemIndex={index}
         />
       )}

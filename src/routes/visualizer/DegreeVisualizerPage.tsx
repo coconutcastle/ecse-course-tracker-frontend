@@ -4,7 +4,7 @@ import courseData from '../../prototype/calendarItems.json'
 import { BackButton } from '../../components/BackButton';
 import { Calendar } from './Calendar';
 import { ProgramRequirementsModal } from './ProgramRequirementsModal';
-import { SemesterInfo, Seasons, CourseInfo, CourseState, CourseStateText } from '../../common/calendar.interfaces';
+import { SemesterInfo, Seasons, CourseInfo, CourseState, CourseStateText } from '../../common/calendar.interface';
 import { MdCheckCircle } from 'react-icons/md';
 
 export const DegreeVisualizerPage = () => {
@@ -16,7 +16,7 @@ export const DegreeVisualizerPage = () => {
   const modifySemesters = (index: number, isDelete: boolean, season?: Seasons, year?: number) => {
     const newSemesters = [...semesters];
     if (isDelete) {
-      newSemesters.splice(index, 1)
+      newSemesters.splice(index, 1);
     } else if (season && year) {
       newSemesters.splice(semesters.length, 0, {
         season: season,
@@ -25,6 +25,16 @@ export const DegreeVisualizerPage = () => {
       });
     };
     setSemesters(newSemesters);
+  };
+
+  const modifyCourse = (semesterIndex: number, isDelete: boolean, courseIndex: number, newCourse?: CourseInfo) => {
+    const newSemesters = [...semesters];
+    if (isDelete) {
+      (newSemesters[semesterIndex].courses).splice(courseIndex, 1);
+    } else if (newCourse) {
+      (newSemesters[semesterIndex].courses).splice(courseIndex, 1, newCourse);   //use length as index if adding a course  
+    };
+    setSemesters(newSemesters)
   };
 
   useEffect(() => {
@@ -68,7 +78,7 @@ export const DegreeVisualizerPage = () => {
             {`${accumulatedCredits}/140 Credits`}
           </div>
         </div>
-        <Calendar semesters={semesters} modifySemesters={modifySemesters}/>
+        <Calendar semesters={semesters} modifySemesters={modifySemesters} modifyCourse={modifyCourse} />
         <div className='d-flex flex-row justify-content-center align-items-center' style={{ marginTop: '40px' }}>
           <button className="landing-button"
           onClick={() => {
