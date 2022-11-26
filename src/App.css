@@ -210,6 +210,11 @@ button:hover {
 
 .progress-bar {
   background-color: #665376;
+  height: 100%;
+  width: 0%;
+  transition-property: width;
+  transition-duration: 2s;
+  transition-timing-function: ease;
 }
 
 .calendar-container {

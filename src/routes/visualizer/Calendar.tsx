@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Seasons, SemesterInfo, CourseInfo } from "../../common/calendar.interfaces";
 import { CalendarItem } from "./CalendarItem";
-import courseData from '../../prototype/calendarItems.json'
 import { useQuery } from 'react-query';
 import { AddSemesterModal } from './AddSemesterModal';
 
+interface CalendarProps {
+  semesters: SemesterInfo[];
+  modifySemesters: (index: number, isDelete: boolean, season?: Seasons, year?: number) => void;
+}
 
-export const Calendar = () => {
-  const [semesters, setSemesters] = useState<SemesterInfo[]>(Object.values(JSON.parse(JSON.stringify(courseData))));
+export const Calendar = ({ semesters, modifySemesters }: CalendarProps) => {
   const [openTabs, setOpenTabs] = useState<boolean[]>(Array(Object.values(semesters).length).fill(false));
   const [isAddSemesterModalOpen, setIsAddSemesterModalOpen] = useState<boolean>(false);
   
@@ -15,20 +17,6 @@ export const Calendar = () => {
     const newOpenTabs = [...openTabs];
     newOpenTabs.splice(index, 1, !newOpenTabs[index]);
     setOpenTabs(newOpenTabs);
-  };
-
-  const modifySemesters = (index: number, isDelete: boolean, season?: Seasons, year?: number) => {
-    const newSemesters = [...semesters];
-    if (isDelete) {
-      newSemesters.splice(index, 1)
-    } else if (season && year) {
-      newSemesters.splice(semesters.length, 0, {
-        season: season,
-        year: year,
-        courses: []
-      });
-    };
-    setSemesters(newSemesters);
   };
 
   console.log(semesters)

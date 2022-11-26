@@ -51,7 +51,9 @@ export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, 
         updateOpenTabs(index);
         }}>
         <div>{`${season} ${year}`}</div>
-        <div style={{ fontSize: '12px', fontWeight: 300, marginLeft: '5%', marginRight: '25%' }}>{`${17 - index} credits`}</div>
+        <div style={{ fontSize: '14px', fontWeight: 300, marginLeft: '5%', marginRight: '25%' }}>
+          {`${courses.reduce((partialSum: number, course: CourseInfo) => partialSum + course.credits, 0)} credits`}
+        </div>
         {isOpen ? <GoTriangleDown /> : <GoTriangleUp />}
       </div>
       {(!isOpen && siblingIsOpen) && (
