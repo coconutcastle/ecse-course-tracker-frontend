@@ -67,7 +67,7 @@ export const AddSemesterModal = ({ isOpen, toggle, numberSemesters, modifySemest
           {({ values, setFieldValue }) => (
             <Form>
               <div className='d-flex flex-column justify-content-center align-items-center'>
-                <div className='p-2 mb-4'>
+                <div className='p-2 mb-2'>
                   <div className='text-center mb-2' style={{ fontSize: '20px', fontWeight: 300 }}>
                     SEASON
                   </div>
@@ -92,6 +92,7 @@ export const AddSemesterModal = ({ isOpen, toggle, numberSemesters, modifySemest
                       <div className='button-text'>SUMMER</div>
                     </Button>
                   </ButtonGroup>
+                  <ErrorMessage name="semester" className="text-field-error" component="div" />
                 </div>
                 <div className='p-2'>
                   <div className='text-center mb-2' style={{ fontSize: '20px', fontWeight: 300 }}>
