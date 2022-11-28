@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { TfiMenu, TfiClose } from 'react-icons/tfi';
+import { UserInfo } from '../common/calendar.interface';
 
 interface SideMenuProps {
   setIsLoggedIn: (newLoggedIn: boolean) => void;
+  setUser: (newUser: UserInfo) => void;
 }
 
-export const SideMenu = ({ setIsLoggedIn }: SideMenuProps) => {
+export const SideMenu = ({ setIsLoggedIn, setUser }: SideMenuProps) => {
   const [isHidden, setIsHidden] = useState<boolean>(true);   //is the menu hidden or not
   const navigate = useNavigate();
 

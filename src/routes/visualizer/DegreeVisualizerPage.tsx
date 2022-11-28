@@ -1,15 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import courseData from '../../prototype/calendarItems.json';
+// import courseData from '../../prototype/calendarItems.json';
 import courses from '../../prototype/courses.json';
 import { BackButton } from '../../components/BackButton';
 import { Calendar } from './Calendar';
 import { ProgramRequirementsModal } from './ProgramRequirementsModal';
-import { SemesterInfo, Seasons, CourseInfo, CourseState, CourseStateText } from '../../common/calendar.interface';
+import { SemesterInfo, Seasons, CourseInfo, CourseState, CourseStateText, UserInfo } from '../../common/calendar.interface';
 import { MdCheckCircle } from 'react-icons/md';
 
-export const DegreeVisualizerPage = () => {
-  const [semesters, setSemesters] = useState<SemesterInfo[]>(Object.values(JSON.parse(JSON.stringify(courseData))));
+interface DegreeVisualizerPageProps {
+  user: UserInfo;
+}
+
+export const DegreeVisualizerPage = ({ user }: DegreeVisualizerPageProps) => {
+  // const [semesters, setSemesters] = useState<SemesterInfo[]>(Object.values(JSON.parse(JSON.stringify(courseData))));
+  const [semesters, setSemesters] = useState<SemesterInfo[]>(user.semesters);
   const [allCourses, setAllCourses] = useState<CourseInfo[]>(JSON.parse(JSON.stringify(courses)))
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [accumulatedCredits, setAccumulatedCredits] = useState<number | undefined>();

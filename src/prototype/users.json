@@ -1,0 +1,136 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "john.doe@gmail.com",
+    "password": "123",
+    "major": "COMPUTER",
+    "minor": [],
+    "semesters": [
+      {
+        "season": "WINTER",
+        "year": 2021,
+        "courses": [
+          {
+            "department": "ECSE",
+            "code": 202,
+            "title": "Introduction to Programming",
+            "credits": 3,
+            "prereqs": [],
+            "restrictions": [],
+            "state": "COMPLETED",
+            "type": "REQUIRED"
+          },
+          {
+            "department": "FACC",
+            "code": 100,
+            "title": "Introduction to the Engineering Progession",
+            "credits": 1,
+            "prereqs": [],
+            "restrictions": [],
+            "state": "COMPLETED",
+            "type": "REQUIRED"
+          },
+          {
+            "department": "PHYS",
+            "code": 142,
+            "title": "Electromagnetism and Optics",
+            "credits": 4,
+            "prereqs": [],
+            "restrictions": [],
+            "state": "FAILED",
+            "type": "REQUIRED"
+          }
+        ]
+      },
+      {
+        "season": "SUMMER",
+        "year": 2021,
+        "courses": [
+          {
+            "department": "MATH",
+            "code": 141,
+            "title": "Calculus 2",
+            "credits": 4,
+            "prereqs": [
+              "MATH 140"
+            ],
+            "restrictions": [],
+            "state": "COMPLETED",
+            "type": "REQUIRED"
+          }
+        ]
+      },
+      {
+        "season": "FALL",
+        "year": 2021,
+        "courses": [
+          {
+            "department": "PHYS",
+            "code": 142,
+            "title": "Electromagnetism and Optics",
+            "credits": 4,
+            "prereqs": [],
+            "restrictions": [],
+            "state": "COMPLETED",
+            "type": "REQUIRED"
+          }
+        ]
+      },
+      {
+        "season": "WINTER",
+        "year": 2022,
+        "courses": [
+          {
+            "department": "ECSE",
+            "code": 205,
+            "title": "Probability and Stats for Engineers",
+            "credits": 3,
+            "prereqs": [],
+            "restrictions": [],
+            "state": "IN_PROGRESS",
+            "type": "REQUIRED"
+          },
+          {
+            "department": "FACC",
+            "code": 400,
+            "title": "Engineering Progessional Practice",
+            "credits": 0,
+            "prereqs": [],
+            "restrictions": [],
+            "state": "IN_PROGRESS",
+            "type": "REQUIRED"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "email": "jane.doe@gmail.com",
+    "password": "321",
+    "major": "NON_ECSE",
+    "minor": [],
+    "semesters": [
+      {
+        "season": "SUMMER",
+        "year": 2021,
+        "courses": [
+          {
+            "department": "MATH",
+            "code": 141,
+            "title": "Calculus 2",
+            "credits": 4,
+            "prereqs": [
+              "MATH 140"
+            ],
+            "restrictions": [],
+            "state": "COMPLETED",
+            "type": "REQUIRED"
+          }
+        ]
+      }
+    ]
+  }
+]

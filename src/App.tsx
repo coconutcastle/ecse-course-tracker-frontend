@@ -8,24 +8,27 @@ import { MajorsAndMinorsPage } from './routes/MajorsAndMinorsPage';
 import { DegreeVisualizerPage } from './routes/visualizer/DegreeVisualizerPage';
 import { ProfilePage } from './routes/ProfilePage';
 import { CurriculumPage } from './routes/CurriculumPage';
+import { UserInfo } from './common/calendar.interface';
+import usersData from './prototype/users.json';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
 const App: React.FC = () => {
-
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+  const [allUsers, setAllUsers] = useState<UserInfo[]>(JSON.parse(JSON.stringify(usersData)));
+  const [user, setUser] = useState<UserInfo | undefined>(undefined);
 
   return (
     <BrowserRouter> 
-      {isLoggedIn && <SideMenu setIsLoggedIn={setIsLoggedIn}/>}
+      {(isLoggedIn && user) && <SideMenu setIsLoggedIn={setIsLoggedIn} setUser={setUser} />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route path="/login" element={<LoginPage setIsLoggedIn={setIsLoggedIn}/>} />
-        <Route path="/create" element={<CreateAccountPage setIsLoggedIn={setIsLoggedIn}/>} />
+        <Route path="/login" element={<LoginPage allUsers={allUsers} setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} />
+        <Route path="/create" element={<CreateAccountPage setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} />
         <Route path="/programs" element={<MajorsAndMinorsPage />} />
-        <Route path="/profile" element={<ProfilePage />} />
+        {(isLoggedIn && user) && <Route path="/profile" element={<ProfilePage user={user}/>} />}
         <Route path="/curriculum" element={<CurriculumPage />} />
-        <Route path="/visualizer" element={<DegreeVisualizerPage />} />
+        {(isLoggedIn && user) && <Route path="/visualizer" element={<DegreeVisualizerPage user={user} />} />}
       </Routes>
     
     </BrowserRouter>

@@ -1,9 +1,13 @@
-import { useNavigate } from "react-router-dom"
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { BackButton } from '../components/BackButton';
+import { UserInfo } from '../common/calendar.interface';
 
 interface LoginPageProps {
   setIsLoggedIn: (newLoggedIn: boolean) => void;
+  allUsers: UserInfo[]
+  setUser: (newUser: UserInfo) => void;
 }
 
 interface LoginFormFields {
@@ -11,7 +15,7 @@ interface LoginFormFields {
   password: string;
 }
 
-export const LoginPage = ({ setIsLoggedIn }: LoginPageProps) => {
+export const LoginPage = ({ setIsLoggedIn, setUser, allUsers }: LoginPageProps) => {
   const navigate = useNavigate();
 
   const validateFields = (values: LoginFormFields) => {
@@ -23,7 +27,13 @@ export const LoginPage = ({ setIsLoggedIn }: LoginPageProps) => {
     if (values.password.length <= 0) {
       errors['password'] = 'This field cannot be empty!'
     };
-    
+    if (values.email.length > 0 && values.password.length > 0) {
+      const foundUser = allUsers.find((user: UserInfo) => ((user.email == values.email) && (user.password == values.password)));
+      if (!foundUser) {
+        errors['email'] = 'Incorrect email or password.';
+        errors['password'] = 'Incorrect email or password.';
+      };
+    };
     if (Object.keys(errors).length > 0) {
       return errors;
     }
@@ -35,14 +45,18 @@ export const LoginPage = ({ setIsLoggedIn }: LoginPageProps) => {
       <div className="title" style={{ marginTop: '-30px' }}>ECSE DEGREE VISUALIZER</div>
       <BackButton />
       <Formik
-      initialValues={{
-        email: '',
-        password: ''
-      }}
-      validate={validateFields}
-      onSubmit={() => {
-        setIsLoggedIn(true);
-        navigate('/visualizer');
+        initialValues={{
+          email: '',
+          password: ''
+        }}
+        validate={validateFields}
+        onSubmit={(values: LoginFormFields) => {
+          const foundUser = allUsers.find((user: UserInfo) => ((user.email == values.email) && (user.password == values.password)));
+          if (foundUser) {
+            setUser(foundUser);
+            setIsLoggedIn(true);
+            navigate('/visualizer');
+          }
         }}>
         {({ errors, touched }) => (
           <Form className="login-form">

@@ -1,9 +1,11 @@
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useResolvedPath } from "react-router-dom"
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { BackButton } from '../components/BackButton';
+import { UserInfo, Majors } from "../common/calendar.interface";
 
 interface CreateAccountPageProps {
   setIsLoggedIn: (newLoggedIn: boolean) => void;
+  setUser: (newUser: UserInfo) => void;
 }
 
 
@@ -14,7 +16,7 @@ interface CreateAccountFormFields {
   password: string;
 }
 
-export const CreateAccountPage = ({ setIsLoggedIn }: CreateAccountPageProps) => {
+export const CreateAccountPage = ({ setIsLoggedIn, setUser }: CreateAccountPageProps) => {
   const navigate = useNavigate();
 
   const validateFields = (values: CreateAccountFormFields) => {
@@ -51,7 +53,16 @@ export const CreateAccountPage = ({ setIsLoggedIn }: CreateAccountPageProps) => 
           password: ''
         }}
         validate={validateFields}
-        onSubmit={() => { 
+        onSubmit={(values: CreateAccountFormFields) => { 
+          setUser({
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            password: values.password,
+            major: "NO_MAJOR",
+            minor: [],
+            semesters: []
+          })
           setIsLoggedIn(true);
           navigate('/visualizer');
           }}>

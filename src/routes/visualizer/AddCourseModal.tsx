@@ -57,10 +57,17 @@ export const AddCourseModal = ({ isOpen, toggle, allCourses, semesterIndex, cour
           }}
           validate={validateFields}
           onSubmit={(values: AddCourseModalFields) => {
-            modifyCourse(semesterIndex, false, courseIndex, allCourses.find((course: CourseInfo) => {
+            const foundCourse = allCourses.find((course: CourseInfo) => {
               const splits = values.newCourse.split(' ');
               return ((course.department as unknown as string) === splits[0]) && (course.code as unknown as string === splits[1])
-            }));
+            });
+            if(foundCourse) {
+              var newCourse = {...foundCourse};
+              newCourse['state'] = 'INCOMPLETE';
+              modifyCourse(semesterIndex, false, courseIndex, newCourse);
+            } else {
+              console.log('ERROR: Course not found.')
+            };
             toggle();
           }}>
           {({ values, setFieldValue }) => (
@@ -72,11 +79,6 @@ export const AddCourseModal = ({ isOpen, toggle, allCourses, semesterIndex, cour
                     <Autocomplete
                       disablePortal
                       id="combo-box-courses"
-                      // InputProps={{ 
-                      //   className: 'mt-2 autocomplete',
-                      //   style: { borderColor: "#8f78a2"}
-                      //  }}
-                      // style={{ borderColor: "#8f78a2"}}
                       onChange={(event: any, newValue: string | null) => {
                         setFieldValue('newCourse', newValue);
                       }}
@@ -85,7 +87,7 @@ export const AddCourseModal = ({ isOpen, toggle, allCourses, semesterIndex, cour
                         setFieldValue('newCourse', newInputValue);
                       }}
                       options={allCourses.map((course: CourseInfo) => `${course.department} ${course.code}`)}
-                      sx={{ width: 300, borderColor: "#8f78a2", marginTop: '30px'}}
+                      sx={{ width: 300, borderColor: "#8f78a2", marginTop: '30px',}}
                       renderInput={(params) => 
                       <TextField {...params} label="Course" />}
                     />

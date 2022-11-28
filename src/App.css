@@ -214,6 +214,15 @@ button:hover {
   background-color: #c6b6d3;
   transition: all .3s ease;
 }
+
+/* .TextField {
+  color: black;
+} */
+
+/* .TextField.Mui-focused { */
+  /* border-color: #8f78a2; */
+/* } */
+
 /* =================== DEGREE VISUALIZER =================== */
 
 .visualizer-page {

@@ -34,7 +34,8 @@ export const MajorsText = {
   ELECTRICAL: 'Electrical',
   COMPUTER: 'Computer',
   SOFTWARE: 'Software',
-  NON_ECSE: 'Non-ECSE'
+  NON_ECSE: 'Non-ECSE',
+  NO_MAJOR: 'No Major'
 }
 
 export const MinorsText = {
@@ -47,7 +48,8 @@ export const MinorsText = {
   ENVIRONMET: 'Environment',
   MATHEMATICS: 'Mathematics',
   PHYSICS: 'Physics',
-  OTHER: 'Other'
+  OTHER: 'Other',
+  N0_MINOR: 'No Minor',
 }
 
 export type CourseType = keyof typeof CourseTypeText;
@@ -78,7 +80,7 @@ export interface UserInfo {
   email: string;
   password: string;
   major: Majors;
-  minor: Minors;
+  minor: Minors[];
   semesters: SemesterInfo[];
 }
 

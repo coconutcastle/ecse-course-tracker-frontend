@@ -17,7 +17,7 @@ interface CourseInfoModalProps {
 
 export const CourseInfoModal = ({ isOpen, toggle, course, semesterIndex, courseIndex, modifyCourse }: CourseInfoModalProps) => {
   const [isUpdatingState, setIsUpdatingState] = useState<boolean>(false);
-  const [newCourseState, setNewCourseState] = useState<CourseState | undefined>(undefined);
+  const [newCourseState, setNewCourseState] = useState<CourseState | null>(null);
 
   return (
     <Modal
@@ -68,7 +68,7 @@ export const CourseInfoModal = ({ isOpen, toggle, course, semesterIndex, courseI
             {isUpdatingState ? (
               <Select
               id="demo-simple-select"
-              value={newCourseState ?? course.state}
+              value={!!newCourseState ? newCourseState : course.state}
               label="State"
               onChange={(e) => setNewCourseState(e.target.value as CourseState)}
             >
@@ -78,7 +78,7 @@ export const CourseInfoModal = ({ isOpen, toggle, course, semesterIndex, courseI
               <MenuItem value={'INCOMPLETE'}>Incomplete</MenuItem>
             </Select>
             ) : (
-              <>{CourseStateText[course.state]}</>
+              <>{!!newCourseState ? CourseStateText[newCourseState] : CourseStateText[course.state]}</>
             )}
             </div>
           <div className='col-4 d-flex justify-content-end'>
@@ -107,7 +107,7 @@ export const CourseInfoModal = ({ isOpen, toggle, course, semesterIndex, courseI
             modifyCourse(semesterIndex, true, courseIndex);
             toggle()
           }}>
-            Delete Semester
+            Remove Course
             <MdDelete 
             className='ms-3 mb-1'/>
           </button>
