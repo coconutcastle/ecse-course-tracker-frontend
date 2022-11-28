@@ -1,0 +1,3 @@
+department,code,title,credits,prereqs,restrictions,type
+COMP,251,Algorithms and Data Structures,3,"['COMP 250', 'MATH 235 OR MATH 240']",['COMP 252'],REQUIRED
+ECSE,403,Control,4,['ECSE 307'],"['ECSE 404', 'ECSE 493']",TECHNICAL_COMPLEMENTARY

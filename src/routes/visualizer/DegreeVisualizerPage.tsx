@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import courseData from '../../prototype/calendarItems.json'
+import courseData from '../../prototype/calendarItems.json';
+import courses from '../../prototype/courses.json';
 import { BackButton } from '../../components/BackButton';
 import { Calendar } from './Calendar';
 import { ProgramRequirementsModal } from './ProgramRequirementsModal';
@@ -9,6 +10,7 @@ import { MdCheckCircle } from 'react-icons/md';
 
 export const DegreeVisualizerPage = () => {
   const [semesters, setSemesters] = useState<SemesterInfo[]>(Object.values(JSON.parse(JSON.stringify(courseData))));
+  const [allCourses, setAllCourses] = useState<CourseInfo[]>(JSON.parse(JSON.stringify(courses)))
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [accumulatedCredits, setAccumulatedCredits] = useState<number | undefined>();
   const navigate = useNavigate();
@@ -29,6 +31,7 @@ export const DegreeVisualizerPage = () => {
 
   const modifyCourse = (semesterIndex: number, isDelete: boolean, courseIndex: number, newCourse?: CourseInfo) => {
     const newSemesters = [...semesters];
+    console.log('modifying', semesterIndex, courseIndex, newCourse)
     if (isDelete) {
       (newSemesters[semesterIndex].courses).splice(courseIndex, 1);
     } else if (newCourse) {
@@ -78,7 +81,7 @@ export const DegreeVisualizerPage = () => {
             {`${accumulatedCredits}/140 Credits`}
           </div>
         </div>
-        <Calendar semesters={semesters} modifySemesters={modifySemesters} modifyCourse={modifyCourse} />
+        <Calendar semesters={semesters} allCourses={allCourses} modifySemesters={modifySemesters} modifyCourse={modifyCourse} />
         <div className='d-flex flex-row justify-content-center align-items-center' style={{ marginTop: '40px' }}>
           <button className="landing-button"
           onClick={() => {

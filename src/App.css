@@ -173,6 +173,26 @@ body {
   padding: 5px;
 }
 
+.lowkey-button-white-background {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.small-button {
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  background-color: #8f78a2;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .button-text {
   color: white;
   font-family: 'Verdana';
@@ -190,6 +210,10 @@ button:hover {
   transition: all .3s ease;
 }
 
+.lowkey-button-white-background:hover {
+  background-color: #c6b6d3;
+  transition: all .3s ease;
+}
 /* =================== DEGREE VISUALIZER =================== */
 
 .visualizer-page {
@@ -289,4 +313,12 @@ button:hover {
 
 .course-info-text {
   font-size: 20px
+}
+
+.autocomplete {
+  border-color: #c6afd8;
+}
+
+.autocomplete:focus {
+  border-color: #8f78a2
 }

@@ -12,7 +12,7 @@ export enum Departments {
   FACC,
   PHYS,
   CHEM,
-  COMP
+  COMP,
 }
 
 export const CourseTypeText = {
@@ -60,10 +60,8 @@ export interface CourseInfo {
   code: number;
   title: string;
   credits: number;
-  prereqs: {
-    required: CourseInfo[];
-    alternative: CourseInfo[];
-  };
+  prereqs: string[];
+  restrictions: string[];
   state: CourseState;
   type: CourseType;
 }
@@ -85,5 +83,10 @@ export interface UserInfo {
 }
 
 export interface ProgramCurriculumInfo {
-
+  type: 'major' | 'minor';
+  program: Majors | Minors;
+  year: number;
+  requiredCourses: string[];
+  techComps: string[];
+  socialsComps: string[];
 }

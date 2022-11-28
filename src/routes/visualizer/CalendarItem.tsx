@@ -9,6 +9,7 @@ interface CalendarItemProps {
   season: Seasons;
   year: number;
   courses: CourseInfo[];
+  allCourses: CourseInfo[];
   openTabs: boolean[];
   updateOpenTabs: any;
   modifySemesters: (index: number, isDelete: boolean, season?: Seasons, year?: number) => void;
@@ -16,7 +17,7 @@ interface CalendarItemProps {
   itemIndex: number;
 }
 
-export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, modifySemesters, modifyCourse, itemIndex }: CalendarItemProps) => {
+export const CalendarItem = ({ season, year, courses, allCourses, openTabs, updateOpenTabs, modifySemesters, modifyCourse, itemIndex }: CalendarItemProps) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [siblingIsOpen, setSiblingIsOpen] = useState<boolean>(false);
   const [isCourseInfoModalOpen, setIsCourseInfoModalOpen] = useState<boolean>(false);
@@ -77,6 +78,9 @@ export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, 
             isOpen={isCourseInfoModalOpen}
             toggle={() => setIsCourseInfoModalOpen(!isCourseInfoModalOpen)}
             course={selectedCourse}
+            semesterIndex={itemIndex}
+            courseIndex={courses.findIndex((course: CourseInfo) => selectedCourse === course)}
+            modifyCourse={modifyCourse}
             />
           )}
           <button key={`${season}-${year}-add`} 
@@ -88,6 +92,7 @@ export const CalendarItem = ({ season, year, courses, openTabs, updateOpenTabs, 
           <AddCourseModal 
           isOpen={isAddCourseModalOpen}
           toggle={() => setIsAddCourseModalOpen(!isAddCourseModalOpen)}
+          allCourses={allCourses}
           semesterIndex={itemIndex}
           courseIndex={courses.length}
           modifyCourse={modifyCourse}
