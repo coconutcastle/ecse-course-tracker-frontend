@@ -293,7 +293,7 @@
     "credits": "4",
     "prereqs": [],
     "restrictions": [],
-    "type": "REQUIRED"
+    "type": "TECHNICAL_COMPLEMENTARY"
   },
   {
     "department": "TC",
@@ -302,7 +302,7 @@
     "credits": "3",
     "prereqs": [],
     "restrictions": [],
-    "type": "REQUIRED"
+    "type": "TECHNICAL_COMPLEMENTARY"
   },
   {
     "department": "ECSE",
@@ -344,7 +344,7 @@
     "credits": "3",
     "prereqs": [],
     "restrictions": [],
-    "type": "REQUIRED"
+    "type": "TECHNICAL_COMPLEMENTARY"
   },
   {
     "department": "TC",
@@ -353,7 +353,7 @@
     "credits": "3",
     "prereqs": [],
     "restrictions": [],
-    "type": "REQUIRED"
+    "type": "TECHNICAL_COMPLEMENTARY"
   },
   {
     "department": "TC",
@@ -362,7 +362,7 @@
     "credits": "3",
     "prereqs": [],
     "restrictions": [],
-    "type": "REQUIRED"
+    "type": "TECHNICAL_COMPLEMENTARY"
   },
   {
     "department": "Elective",
@@ -371,7 +371,7 @@
     "credits": "3",
     "prereqs": [],
     "restrictions": [],
-    "type": "REQUIRED"
+    "type": "ELECTIVE"
   },
   {
     "department": "FACC",
@@ -385,5 +385,14 @@
     ],
     "restrictions": [],
     "type": "REQUIRED"
-  }
+  },
+  {
+    "department": "ECSE",
+    "code": "403",
+    "title": "Control",
+    "credits": "4",
+    "prereqs": ["ECSE 307"],
+    "restrictions": ["ECSE 404", "ECSE 493"],
+    "type": "TECHNICAL_COMPLEMENTARY"
+}
 ]

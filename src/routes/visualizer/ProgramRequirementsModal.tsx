@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { Modal } from 'reactstrap';
 import { TfiClose } from 'react-icons/tfi';
+import { CourseInfo, ProgramCurriculumInfo, UserInfo } from '../../common/calendar.interface';
 
 interface ProgramRequirementsModalProps {
   isOpen: boolean;
   toggle: any;
+  user: UserInfo;
+  // program: ProgramCurriculumInfo;    //for later
+  program: CourseInfo[];
+  accumulatedCredits: number;
 }
 
-export const ProgramRequirementsModal = ({ isOpen, toggle }: ProgramRequirementsModalProps) => {
+export const ProgramRequirementsModal = ({ isOpen, toggle, program, accumulatedCredits }: ProgramRequirementsModalProps) => {
 
   return (
     <Modal
@@ -26,9 +31,23 @@ export const ProgramRequirementsModal = ({ isOpen, toggle }: ProgramRequirements
             </button>
           </div> 
         </div>
-        
-        <div>
-          hello
+        <div className='row p-3'>
+          <div className='course-info-text fw-bold col-3'>Unfulfilled Credits: </div>
+          <div className='course-info-text col-9'>{accumulatedCredits}/140</div>
+        </div>
+        <div className='row p-3'>
+          <div className='course-info-text fw-bold col-6'>Remaining Required Courses: </div>
+            <div className='course-info-text col-6'>{
+              (program.filter((course: CourseInfo) => course.type === 'REQUIRED')).map((c: CourseInfo, index) => 
+              <div key={index}>{`${c.department} ${c.code}`}</div>)}
+            </div>
+        </div>
+        <div className='row p-3'>
+          <div className='course-info-text fw-bold col-6'>Remaining Technical Complemetaries: </div>
+            <div className='course-info-text col-6'>{
+              (program.filter((course: CourseInfo) => course.type === 'TECHNICAL_COMPLEMENTARY')).map((c: CourseInfo, index) => 
+              <div key={index}>{`${c.department} ${c.code}`}</div>)}
+            </div>
         </div>
       </div>
       

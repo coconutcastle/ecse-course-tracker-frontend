@@ -73,6 +73,9 @@ export const DegreeVisualizerPage = ({ user }: DegreeVisualizerPageProps) => {
           <ProgramRequirementsModal 
           isOpen={isModalOpen}
           toggle={() => setIsModalOpen(!isModalOpen)}
+          user={user}
+          program={allCourses}
+          accumulatedCredits={accumulatedCredits || 0}
           />
           <div className='col-5 ms-5'>
             <div style={{ height: '15px', width: '100%', backgroundColor: '#F3F3F3' }}>
