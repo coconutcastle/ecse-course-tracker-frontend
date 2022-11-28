@@ -17,7 +17,7 @@ export const MajorsAndMinorsPage = () => {
         </button>
         {majorsButtonsOpen && (
           <>
-            <button className="degree-button" style={{ backgroundColor: '#e8dcf1' }} onClick={() => window.open('https://www.mcgill.ca/study/2022-2023/faculties/engineering/undergraduate/ug_eng_electrical_computer_engineering', '_blank')}>
+            <button className="degree-button" style={{ backgroundColor: '#e8dcf1' }} onClick={() => window.open('https://www.mcgill.ca/study/2022-2023/faculties/engineering/undergraduate/programs/bachelor-engineering-beng-electrical-engineering', '_blank')}>
               <div className="button-text">
                 ELECTRICAL
               </div>

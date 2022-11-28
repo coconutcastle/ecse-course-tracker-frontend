@@ -13,6 +13,8 @@ import usersData from './prototype/users.json';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
+//icon source: https://www.pinterest.ca/pin/647322146435963818/
+
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
   const [allUsers, setAllUsers] = useState<UserInfo[]>(JSON.parse(JSON.stringify(usersData)));
