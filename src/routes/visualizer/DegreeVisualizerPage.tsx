@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 // import courseData from '../../prototype/calendarItems.json';
-import courses from '../../prototype/courses.json';
+import courses from '../../prototype/some_courses.json';
 import { BackButton } from '../../components/BackButton';
 import { Calendar } from './Calendar';
 import { ProgramRequirementsModal } from './ProgramRequirementsModal';

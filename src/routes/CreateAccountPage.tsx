@@ -8,7 +8,6 @@ interface CreateAccountPageProps {
   setUser: (newUser: UserInfo) => void;
 }
 
-
 interface CreateAccountFormFields {
   firstName: string;
   lastName: string;
