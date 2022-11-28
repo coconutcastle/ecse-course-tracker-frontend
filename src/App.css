@@ -122,6 +122,7 @@ body {
   justify-content: center;
   flex-direction: row;
   justify-self: center;
+  /* backgroundColor: #e8dcf1 */
 }
 
 .degree-button {
