@@ -203,17 +203,17 @@ body {
 
 button:hover {
   opacity: 70% !important;
-  transition: all .3s ease;
+  transition: opacity .3s ease;
 }
 
 .lowkey-button:hover {
   background-color: #8f78a2;
-  transition: all .3s ease;
+  transition: opacity .3s ease;
 }
 
 .lowkey-button-white-background:hover {
   background-color: #c6b6d3;
-  transition: all .3s ease;
+  transition: opacity .3s ease;
 }
 
 /* .TextField {

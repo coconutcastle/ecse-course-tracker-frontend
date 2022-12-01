@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes, redirect } from 'react-router-dom';
 import { LandingPage } from './routes/LandingPage';
 import { CreateAccountPage } from './routes/CreateAccountPage';
 import { LoginPage } from './routes/LoginPage';
@@ -31,6 +31,7 @@ const App: React.FC = () => {
         {(isLoggedIn && user) && <Route path="/profile" element={<ProfilePage user={user}/>} />}
         <Route path="/curriculum" element={<CurriculumPage />} />
         {(isLoggedIn && user) && <Route path="/visualizer" element={<DegreeVisualizerPage user={user} />} />}
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     
     </BrowserRouter>
