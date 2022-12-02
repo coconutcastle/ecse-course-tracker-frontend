@@ -1,37 +1,48 @@
-import { useState } from 'react';
 import { Modal } from 'reactstrap';
-import { TfiClose } from 'react-icons/tfi';
 
 interface ConfirmationModalProps {
   isOpen: boolean;
   toggle: any;
+  modificationFunction: any;
+  modificationParams: any;
+  message: string;
 }
 
-export const ConfirmationModal = ({ isOpen, toggle }: ConfirmationModalProps) => {
+export const ConfirmationModal = ({ isOpen, toggle, modificationFunction, modificationParams, message }: ConfirmationModalProps) => {
 
   return (
     <Modal
-    isOpen={isOpen}
-    toggle={toggle}
-    className="requirements-modal"
-    size='sm'>
-      <div className='p-3'>
-        <div className='text-center title-secondary position-relative top-0 end-25'>
-          PROGRAM REQUIREMENTS
-          <div className='position-relative float-end me-5'>
-            <button
-            style={{ height: '50px', 'width': '50px', borderRadius: '50%', position: 'fixed', backgroundColor: "black", zIndex: 2 }}
-            onClick={toggle}>
-              <TfiClose color='white' />
-            </button>
-          </div> 
+      isOpen={isOpen}
+      toggle={toggle}
+      className="requirements-modal"
+      size='md'>
+      <div className=' p-4 d-flex flex-column justify-content-center align-items-center'>
+        <div className='row p-3 text-center'>
+          {message}
         </div>
-        <div className='row p-3'>
-          <div className='course-info-text fw-bold col-3'>Unfulfilled Credits: </div>
-          <div className='course-info-text col-9'>yo/140</div>
+        <div className='d-flex flex-row justify-content-center align-items-center' style={{ marginTop: '20px' }}>
+          <button className="landing-button me-2"
+            type='button'
+            style={{ width: '180px', backgroundColor: 'white', border: '3px solid #8f78a2' }}
+            onClick={() => toggle()}>
+            <div className="button-text" style={{ color: '#8f78a2' }} >
+              CANCEL
+            </div>
+          </button>
+          <button className="landing-button ms-2" type='submit' style={{ width: '180px' }}
+            onClick={() => {
+              console.log(modificationParams)
+              console.log(modificationFunction)
+              modificationFunction(...Object.values(modificationParams))
+              toggle();
+              }}>
+            <div className="button-text">
+              CONFIRM
+            </div>
+          </button>
         </div>
       </div>
-      
+
     </Modal>
   )
 }

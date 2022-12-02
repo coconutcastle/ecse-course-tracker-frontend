@@ -12,10 +12,14 @@ interface CourseInfoModalProps {
   course: CourseInfo;
   semesterIndex: number;
   courseIndex: number;
+  setIsConfirmationModalOpen: (newOpen: boolean) => void;
+  setConfirmModificationFunction: any;
+  setConfirmModificationParams: any;
+  setConfirmationMessage: (newMessage: string) => void;
   modifyCourse: (semesterIndex: number, isDelete: boolean, courseIndex: number, newCourse?: CourseInfo) => void;
 }
 
-export const CourseInfoModal = ({ isOpen, toggle, course, semesterIndex, courseIndex, modifyCourse }: CourseInfoModalProps) => {
+export const CourseInfoModal = ({ isOpen, toggle, course, semesterIndex, courseIndex, setIsConfirmationModalOpen, setConfirmModificationFunction, setConfirmModificationParams, setConfirmationMessage, modifyCourse }: CourseInfoModalProps) => {
   const [isUpdatingState, setIsUpdatingState] = useState<boolean>(false);
   const [newCourseState, setNewCourseState] = useState<CourseState | null>(null);
 
@@ -104,6 +108,10 @@ export const CourseInfoModal = ({ isOpen, toggle, course, semesterIndex, courseI
           <button 
           className="lowkey-button-white-background"
           onClick={() => {
+            // setConfirmModificationFunction(modifyCourse);
+            // setConfirmModificationParams({ semesterIndex: semesterIndex, isDelete: true, courseIndex: courseIndex });
+            // setConfirmationMessage(`Are you sure you want to remove the course ${course.department} ${course.code} from this semester? This action cannot be undone!`);
+            // setIsConfirmationModalOpen(true);
             modifyCourse(semesterIndex, true, courseIndex);
             toggle()
           }}>

@@ -17,11 +17,11 @@ export const DegreeVisualizerPage = ({ user, setUser }: DegreeVisualizerPageProp
   const [allCourses, setAllCourses] = useState<CourseInfo[]>(JSON.parse(JSON.stringify(courses)))
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [accumulatedCredits, setAccumulatedCredits] = useState<number | undefined>();
-  const navigate = useNavigate();
 
   const modifySemesters = (index: number, isDelete: boolean, season?: Seasons, year?: number) => {
     const { semesters, ...info } = user;
     const newSemesters: SemesterInfo[] = [...semesters];
+    console.log('modifying', index, isDelete, season, year);
     if (isDelete) {
       newSemesters.splice(index, 1);
     } else if (season && year) {

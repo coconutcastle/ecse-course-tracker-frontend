@@ -4,6 +4,7 @@ import { GoTriangleUp, GoTriangleDown } from 'react-icons/Go';
 import { MdDelete } from 'react-icons/md';
 import { CourseInfoModal } from './CourseInfoModal';
 import { AddCourseModal } from './AddCourseModal';
+import { ConfirmationModal } from '../../components/ConfirmationModal';
 
 interface CalendarItemProps {
   season: Seasons;
@@ -23,6 +24,10 @@ export const CalendarItem = ({ season, year, courses, allCourses, openTabs, upda
   const [isCourseInfoModalOpen, setIsCourseInfoModalOpen] = useState<boolean>(false);
   const [selectedCourse, setSelectedCourse] = useState<CourseInfo | undefined>();
   const [isAddCourseModalOpen, setIsAddCourseModalOpen] = useState<boolean>(false);
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState<boolean>(false);
+  const [confirmModificationFunction, setConfirmModificationFunction] = useState<any>(undefined);
+  const [confirmModificationParams, setConfirmModificationParams] = useState<any>(undefined);
+  const [confirmationMessage, setConfirmationMessage] = useState<string>('');
 
   useEffect(() => {
     const columnPlace = itemIndex % 3;
@@ -48,9 +53,6 @@ export const CalendarItem = ({ season, year, courses, allCourses, openTabs, upda
     };
   }, [openTabs]);
 
-  console.log(courses)
-  console.log(courses.reduce((partialSum: number, course: CourseInfo) => partialSum + course.credits, 0))
-
   return (
     <div className='flex-column' style={{ width: '33%' }}>
       <div className="calendar-item" onClick={() => {
@@ -73,6 +75,7 @@ export const CalendarItem = ({ season, year, courses, allCourses, openTabs, upda
             className="calendar-item-course-item-small" 
             onClick={() => {
               setSelectedCourse(course);
+              setConfirmModificationFunction(modifyCourse);
               setIsCourseInfoModalOpen(!isCourseInfoModalOpen);
             }}>{`${course.department} ${course.code}`}</button>
           ))}
@@ -83,6 +86,10 @@ export const CalendarItem = ({ season, year, courses, allCourses, openTabs, upda
             course={selectedCourse}
             semesterIndex={itemIndex}
             courseIndex={courses.findIndex((course: CourseInfo) => selectedCourse === course)}
+            setIsConfirmationModalOpen={setIsConfirmationModalOpen}
+            setConfirmModificationFunction={setConfirmModificationFunction}
+            setConfirmModificationParams={setConfirmModificationParams}
+            setConfirmationMessage={setConfirmationMessage}
             modifyCourse={modifyCourse}
             />
           )}
@@ -100,11 +107,23 @@ export const CalendarItem = ({ season, year, courses, allCourses, openTabs, upda
           courseIndex={courses.length}
           modifyCourse={modifyCourse}
           />
-          <button key={`${season}-${year}-delete`} className="lowkey-button" onClick={() => modifySemesters(itemIndex, true)}>
+          <button key={`${season}-${year}-delete`} className="lowkey-button" 
+          onClick={() => {
+            setConfirmModificationFunction(modifySemesters);
+            setConfirmModificationParams({ index: itemIndex, isDelete: true })
+            setConfirmationMessage(`Are you sure you'd like to delete the semester ${season} ${year}? This action cannot be undone!`);
+            setIsConfirmationModalOpen(true);
+          }}>
             Delete Semester
             <MdDelete 
             className='ms-3 mb-1'/>
           </button>
+          <ConfirmationModal 
+          isOpen={isConfirmationModalOpen} 
+          toggle={() => setIsConfirmationModalOpen(!isConfirmationModalOpen)}
+          modificationFunction={confirmModificationFunction} 
+          modificationParams={confirmModificationParams}
+          message={confirmationMessage}/>
         </div>
       )}
     </div>
