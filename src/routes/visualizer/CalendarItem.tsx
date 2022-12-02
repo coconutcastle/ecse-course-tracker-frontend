@@ -25,7 +25,7 @@ export const CalendarItem = ({ season, year, courses, allCourses, openTabs, upda
   const [selectedCourse, setSelectedCourse] = useState<CourseInfo | undefined>();
   const [isAddCourseModalOpen, setIsAddCourseModalOpen] = useState<boolean>(false);
   const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState<boolean>(false);
-  const [confirmModificationFunction, setConfirmModificationFunction] = useState<any>(undefined);
+  const [confirmModificationFunction, setConfirmModificationFunction] = useState<any>(modifySemesters);
   const [confirmModificationParams, setConfirmModificationParams] = useState<any>(undefined);
   const [confirmationMessage, setConfirmationMessage] = useState<string>('');
 
@@ -75,7 +75,7 @@ export const CalendarItem = ({ season, year, courses, allCourses, openTabs, upda
             className="calendar-item-course-item-small" 
             onClick={() => {
               setSelectedCourse(course);
-              setConfirmModificationFunction(modifyCourse);
+              // setConfirmModificationFunction(modifyCourse);
               setIsCourseInfoModalOpen(!isCourseInfoModalOpen);
             }}>{`${course.department} ${course.code}`}</button>
           ))}
@@ -121,7 +121,7 @@ export const CalendarItem = ({ season, year, courses, allCourses, openTabs, upda
           <ConfirmationModal 
           isOpen={isConfirmationModalOpen} 
           toggle={() => setIsConfirmationModalOpen(!isConfirmationModalOpen)}
-          modificationFunction={confirmModificationFunction} 
+          modificationFunction={modifySemesters} 
           modificationParams={confirmModificationParams}
           message={confirmationMessage}/>
         </div>
