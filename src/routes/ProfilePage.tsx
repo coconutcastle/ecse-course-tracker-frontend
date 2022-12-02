@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { BackButton } from "../components/BackButton";
 import { Majors, UserInfo, MajorsText, MinorsText, Minors } from "../common/calendar.interface";
+import { EMAIL_PATTERN } from "../common/constants";
 import { MdCheckCircle, MdOutlineRemoveRedEye } from 'react-icons/md';
 import { BsEyeSlash } from 'react-icons/bs';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import ListItemText from '@mui/material/ListItemText';
 import Checkbox from '@mui/material/Checkbox';
 import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 
@@ -48,6 +48,8 @@ export const ProfilePage = ({ user, setUser }: ProfilePageProps) => {
     };
     if (values.email.length <= 0) {
       errors['email'] = 'This field cannot be empty!'
+    } else if (!EMAIL_PATTERN.test(values.email)) {
+      errors['email'] = 'Please enter a valid email'
     };
     if (values.password.length <= 0) {
       errors['password'] = 'This field cannot be empty!'
@@ -96,7 +98,6 @@ export const ProfilePage = ({ user, setUser }: ProfilePageProps) => {
                       <Field name='firstName' type='text' placeholder="First Name" className='text-field' style={{ backgroundColor: 'white', height: '40px' }} />
                       <ErrorMessage name="firstName" className="text-field-error" component="div" />
                     </>
-                    
                   ) : (`${newUserInfo.firstName}`)
                 }</div>
               </div>
@@ -108,7 +109,6 @@ export const ProfilePage = ({ user, setUser }: ProfilePageProps) => {
                       <Field name='lastName' type='text' placeholder="Last Name" className='text-field' style={{ backgroundColor: 'white', height: '40px' }} />
                       <ErrorMessage name="lastName" className="text-field-error" component="div" />
                     </>
-                    
                   ) : (`${newUserInfo.lastName}`)
                 }</div>
               </div>
@@ -120,7 +120,6 @@ export const ProfilePage = ({ user, setUser }: ProfilePageProps) => {
                       <Field name='email' type='text' placeholder="Email" className='text-field' style={{ backgroundColor: 'white', height: '40px' }} />
                       <ErrorMessage name="email" className="text-field-error" component="div" />
                     </>
-                    
                   ) : (`${newUserInfo.email}`)
                 }</div>
               </div>
@@ -151,16 +150,10 @@ export const ProfilePage = ({ user, setUser }: ProfilePageProps) => {
                       input={<OutlinedInput label="Tag" />}
                       renderValue={(selected) => MajorsText[selected as Majors]}
                       sx={{
-                        "&:hover": {
-                          "&& fieldset": {
-                            border: '3px solid #8f78a2'
-                          }
-                        },
-                        "& fieldset": {
-                          border: '3px solid #8f78a2'
-                        }
-                      }}
-                    >
+                        width: '300px',
+                        "&:hover": { "&& fieldset": { border: '3px solid #8f78a2' } },
+                        "& fieldset": { border: '3px solid #8f78a2' }
+                      }}>
                       {Object.keys(MajorsText).map((major: string, index) => (
                         <MenuItem key={index} value={major}>
                           <ListItemText primary={MajorsText[major as Majors]} />
@@ -181,19 +174,12 @@ export const ProfilePage = ({ user, setUser }: ProfilePageProps) => {
                         setFieldValue('minor', value);
                       }}
                       input={<OutlinedInput label="Tag" />}
-                      renderValue={(selected) => 'Minors'}
+                      renderValue={(selected) => (selected.map((sel) => MinorsText[sel as Minors]).join(', '))}
                       sx={{
-                        "&:hover": {
-                          "&& fieldset": {
-                            border: '3px solid #8f78a2'
-                          }
-                        },
-                        "& fieldset": {
-                          border: '3px solid #8f78a2'
-                        },
-                        "& .MuiSelect": {
-                          borderWidth: '3px'
-                        }
+                        width: '300px',
+                        "&:hover": { "&& fieldset": { border: '3px solid #8f78a2' } },
+                        "& fieldset": { border: '3px solid #8f78a2' },
+                        "& .MuiSelect": { borderWidth: '3px'}
                       }}
                     >
                       {Object.keys(MinorsText).map((minor: string, index) => (

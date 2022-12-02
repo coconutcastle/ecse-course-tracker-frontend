@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { BackButton } from '../components/BackButton';
 import { UserInfo } from '../common/calendar.interface';
+import { EMAIL_PATTERN } from "../common/constants";
 
 interface LoginPageProps {
   setIsLoggedIn: (newLoggedIn: boolean) => void;
@@ -32,6 +33,8 @@ export const LoginPage = ({ setIsLoggedIn, setUser, allUsers }: LoginPageProps) 
       if (!foundUser) {
         errors['email'] = 'Incorrect email or password.';
         errors['password'] = 'Incorrect email or password.';
+      } else if (!EMAIL_PATTERN.test(values.email)) {
+        errors['email'] = 'Please enter a valid email'
       };
     };
     if (Object.keys(errors).length > 0) {

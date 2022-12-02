@@ -2,6 +2,7 @@ import { useNavigate, useResolvedPath } from "react-router-dom"
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 import { BackButton } from '../components/BackButton';
 import { UserInfo, Majors } from "../common/calendar.interface";
+import { EMAIL_PATTERN } from "../common/constants";
 
 interface CreateAccountPageProps {
   setIsLoggedIn: (newLoggedIn: boolean) => void;
@@ -29,6 +30,8 @@ export const CreateAccountPage = ({ setIsLoggedIn, setUser }: CreateAccountPageP
     };
     if (values.email.length <= 0) {
       errors['email'] = 'This field cannot be empty!'
+    }  else if (!EMAIL_PATTERN.test(values.email)) {
+      errors['email'] = 'Please enter a valid email'
     };
     if (values.password.length <= 0) {
       errors['password'] = 'This field cannot be empty!'
