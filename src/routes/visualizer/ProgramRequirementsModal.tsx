@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Modal } from 'reactstrap';
+import { Modal, ModalBody } from 'reactstrap';
 import { TfiClose } from 'react-icons/tfi';
-import { CourseInfo, ProgramCurriculumInfo, UserInfo } from '../../common/calendar.interface';
+import { CourseInfo, MajorsText, ProgramCurriculumInfo, UserInfo } from '../../common/calendar.interface';
+import { useRadioGroup } from '@mui/material';
 
 interface ProgramRequirementsModalProps {
   isOpen: boolean;
@@ -12,14 +13,16 @@ interface ProgramRequirementsModalProps {
   accumulatedCredits: number;
 }
 
-export const ProgramRequirementsModal = ({ isOpen, toggle, program, accumulatedCredits }: ProgramRequirementsModalProps) => {
+export const ProgramRequirementsModal = ({ isOpen, toggle, user, program, accumulatedCredits }: ProgramRequirementsModalProps) => {
 
   return (
     <Modal
     isOpen={isOpen}
     toggle={toggle}
-    className="requirements-modal"
+    scrollable={true}
+    dialogClassName="requirements-modal"
     size='lg'>
+      <ModalBody>
       <div className='p-3'>
         <div className='text-center title-secondary position-relative top-0 end-25'>
           PROGRAM REQUIREMENTS
@@ -30,6 +33,10 @@ export const ProgramRequirementsModal = ({ isOpen, toggle, program, accumulatedC
               <TfiClose color='white' />
             </button>
           </div> 
+        </div>
+        <div className='row p-3'>
+          <div className='course-info-text fw-bold col-3'>Major: </div>
+          <div className='course-info-text col-9'>{MajorsText[user.major]}</div>
         </div>
         <div className='row p-3'>
           <div className='course-info-text fw-bold col-3'>Unfulfilled Credits: </div>
@@ -50,7 +57,7 @@ export const ProgramRequirementsModal = ({ isOpen, toggle, program, accumulatedC
             </div>
         </div>
       </div>
-      
+      </ModalBody>
     </Modal>
   )
 }

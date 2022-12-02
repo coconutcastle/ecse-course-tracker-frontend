@@ -2,8 +2,8 @@
   {
     "firstName": "John",
     "lastName": "Doe",
-    "email": " ",
-    "password": " ",
+    "email": "john.doe@gmail.com",
+    "password": "123",
     "major": "COMPUTER",
     "minor": [],
     "semesters": [

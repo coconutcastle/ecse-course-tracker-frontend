@@ -320,8 +320,9 @@ button:hover {
 /* =================== MODAL =================== */
 
 .requirements-modal {
-  /* height: 1600px;
-  width: 800px; */
+  max-height: 800px;
+  width: 800px;
+  overflow: auto;
 }
 
 .course-input-text {
