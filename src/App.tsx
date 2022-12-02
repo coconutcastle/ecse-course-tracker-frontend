@@ -10,10 +10,22 @@ import { ProfilePage } from './routes/ProfilePage';
 import { CurriculumPage } from './routes/CurriculumPage';
 import { UserInfo } from './common/calendar.interface';
 import usersData from './prototype/users.json';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 import 'bootstrap/dist/css/bootstrap.css';
 import './App.css'
 
 //icon source: https://www.pinterest.ca/pin/647322146435963818/
+
+const MuiTheme = createTheme({
+  palette: {
+    primary: {
+      main: '#8f78a2'
+    },
+    secondary: {
+      main: '#8f78a2'
+    }
+  }
+});
 
 const App: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
@@ -21,6 +33,7 @@ const App: React.FC = () => {
   const [user, setUser] = useState<UserInfo | undefined>(undefined);
 
   return (
+    <ThemeProvider theme={MuiTheme}>
     <BrowserRouter> 
       {(isLoggedIn && user) && <SideMenu setIsLoggedIn={setIsLoggedIn} setUser={setUser} />}
       <Routes>
@@ -34,7 +47,7 @@ const App: React.FC = () => {
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     
-    </BrowserRouter>
+    </BrowserRouter></ThemeProvider>
   )
 }
 

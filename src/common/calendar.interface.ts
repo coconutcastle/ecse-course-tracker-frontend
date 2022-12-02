@@ -45,11 +45,11 @@ export const MinorsText = {
   ARTS: 'Arts',
   CHEMISTRY: 'Chemistry',
   ECONOMICS: 'Economics',
-  ENVIRONMET: 'Environment',
+  ENVIRONMENT: 'Environment',
   MATHEMATICS: 'Mathematics',
   PHYSICS: 'Physics',
   OTHER: 'Other',
-  N0_MINOR: 'No Minor',
+  NO_MINOR: 'No Minor',
 }
 
 export type CourseType = keyof typeof CourseTypeText;
