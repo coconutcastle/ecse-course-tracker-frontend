@@ -48,6 +48,9 @@ export const CalendarItem = ({ season, year, courses, allCourses, openTabs, upda
     };
   }, [openTabs]);
 
+  console.log(courses)
+  console.log(courses.reduce((partialSum: number, course: CourseInfo) => partialSum + course.credits, 0))
+
   return (
     <div className='flex-column' style={{ width: '33%' }}>
       <div className="calendar-item" onClick={() => {

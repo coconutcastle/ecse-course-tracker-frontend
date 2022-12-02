@@ -96,7 +96,7 @@ export const CourseInfoModal = ({ isOpen, toggle, course, semesterIndex, courseI
                 setIsUpdatingState(true)
               };
             }}>
-              <div className='button-text'>{isUpdatingState ? 'Done' : 'Update'}</div>
+              <div className='button-text' style={{ fontWeight: 600, fontSize: '18px' }} >{isUpdatingState ? 'Done' : 'Update'}</div>
             </button>
           </div>
         </div>

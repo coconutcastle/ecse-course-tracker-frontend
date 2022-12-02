@@ -51,7 +51,7 @@ export const SideMenu = ({ setIsLoggedIn, setUser }: SideMenuProps) => {
           </button>
         </div>
       </div>
-      <div className={isHidden ? '' : 'hide-screen'} />
+      <div className={isHidden ? '' : 'hide-screen'} onClick={() => setIsHidden(true)} />
     </>
   )
 }

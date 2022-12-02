@@ -13,7 +13,7 @@
         "courses": [
           {
             "department": "ECSE",
-            "code": 202,
+            "code": "202",
             "title": "Introduction to Programming",
             "credits": 3,
             "prereqs": [],
@@ -23,7 +23,7 @@
           },
           {
             "department": "FACC",
-            "code": 100,
+            "code": "100",
             "title": "Introduction to the Engineering Progession",
             "credits": 1,
             "prereqs": [],
@@ -33,7 +33,7 @@
           },
           {
             "department": "PHYS",
-            "code": 142,
+            "code": "142",
             "title": "Electromagnetism and Optics",
             "credits": 4,
             "prereqs": [],
@@ -49,7 +49,7 @@
         "courses": [
           {
             "department": "MATH",
-            "code": 141,
+            "code": "141",
             "title": "Calculus 2",
             "credits": 4,
             "prereqs": [
@@ -67,7 +67,7 @@
         "courses": [
           {
             "department": "PHYS",
-            "code": 142,
+            "code": "142",
             "title": "Electromagnetism and Optics",
             "credits": 4,
             "prereqs": [],
@@ -83,7 +83,7 @@
         "courses": [
           {
             "department": "ECSE",
-            "code": 205,
+            "code": "205",
             "title": "Probability and Stats for Engineers",
             "credits": 3,
             "prereqs": [],
@@ -93,7 +93,7 @@
           },
           {
             "department": "FACC",
-            "code": 400,
+            "code": "400",
             "title": "Engineering Progessional Practice",
             "credits": 0,
             "prereqs": [],
@@ -119,7 +119,7 @@
         "courses": [
           {
             "department": "MATH",
-            "code": 141,
+            "code": "141",
             "title": "Calculus 2",
             "credits": 4,
             "prereqs": [

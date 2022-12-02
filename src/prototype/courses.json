@@ -3,7 +3,7 @@
       "department": "COMP",
       "code": "251",
       "title": "Algorithms and Data Structures",
-      "credits": "3",
+      "credits": 3,
       "prereqs": ["COMP 250", "MATH 235 OR MATH 240"],
       "restrictions": ["COMP 252"],
       "type": "REQUIRED"
@@ -12,7 +12,7 @@
       "department": "ECSE",
       "code": "403",
       "title": "Control",
-      "credits": "4",
+      "credits": 4,
       "prereqs": ["ECSE 307"],
       "restrictions": ["ECSE 404", "ECSE 493"],
       "type": "TECHNICAL_COMPLEMENTARY"

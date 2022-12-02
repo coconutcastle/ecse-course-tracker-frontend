@@ -21,8 +21,6 @@ export const Calendar = ({ semesters, allCourses, modifySemesters, modifyCourse 
     setOpenTabs(newOpenTabs);
   };
 
-  console.log(semesters)
-
   return (
     <div className='calendar-container'>
       {semesters.map((semester: SemesterInfo, index) => 

@@ -3,7 +3,7 @@
     "department": "CIVE",
     "code": "281",
     "title": "Analytical Mechanics",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "MATH 262",
       "MATH 263"
@@ -15,7 +15,7 @@
     "department": "COMP",
     "code": "202",
     "title": "Foundations of Programming",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "REQUIRED"
@@ -24,9 +24,9 @@
     "department": "ECSE",
     "code": "200",
     "title": "Electric Circuits 1",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
-      " PHYS 142",
+      "PHYS 142",
       "MATH 263"
     ],
     "restrictions": [],
@@ -36,7 +36,7 @@
     "department": "MATH",
     "code": "262",
     "title": "Intermediate Calculus",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "MATH 133 or equiv.",
       "MATH 141"
@@ -48,7 +48,7 @@
     "department": "MATH",
     "code": "263",
     "title": "ODEs for Engineers",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "MATH 262"
     ],
@@ -59,7 +59,7 @@
     "department": "ECSE",
     "code": "205",
     "title": "Probability & Statistics for Eng.",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "REQUIRED"
@@ -68,7 +68,7 @@
     "department": "ECSE",
     "code": "206",
     "title": "Intro. to Signals & Networks",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "ECSE 200"
     ],
@@ -79,7 +79,7 @@
     "department": "ECSE",
     "code": "210",
     "title": "Electric Circuits 2",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "ECSE 200"
     ],
@@ -90,7 +90,7 @@
     "department": "ECSE",
     "code": "211",
     "title": "Design Principles and Methods",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "ECSE 200",
       "COMP 202 or ECSE 202"
@@ -102,7 +102,7 @@
     "department": "ECSE",
     "code": "251",
     "title": "Electric and Magnetic Fields",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "MATH 262",
       "ECSE 200"
@@ -114,7 +114,7 @@
     "department": "FACC",
     "code": "100",
     "title": "Intro. to Engineering Profession",
-    "credits": "1",
+    "credits": 1,
     "prereqs": [],
     "restrictions": [],
     "type": "REQUIRED"
@@ -123,7 +123,7 @@
     "department": "ECSE",
     "code": "250",
     "title": "Fundamentals of Software Development",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "COMP 202 or equiv"
     ],
@@ -134,7 +134,7 @@
     "department": "ECSE",
     "code": "222",
     "title": "Digital Logic",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "COMP 202 or ECSE 202"
     ],
@@ -145,7 +145,7 @@
     "department": "ECSE",
     "code": "362",
     "title": "Fundamentals of Power Eng.",
-    "credits": "4",
+    "credits": 4,
     "prereqs": [
       "ECSE 210",
       "ECSE 251",
@@ -158,7 +158,7 @@
     "department": "MIME",
     "code": "262",
     "title": "Properties of Materials in EE",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "REQUIRED"
@@ -167,7 +167,7 @@
     "department": "COMP",
     "code": "206",
     "title": "Introduction to Software Systems",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "COMP 202 or ECSE 202",
       "COMP 250 or ECSE 250"
@@ -179,7 +179,7 @@
     "department": "ECSE",
     "code": "307",
     "title": "Linear Systems & Control",
-    "credits": "4",
+    "credits": 4,
     "prereqs": [
       "ECSE 206",
       "ECSE 210"
@@ -191,7 +191,7 @@
     "department": "ECSE",
     "code": "324",
     "title": "Computer Organization",
-    "credits": "4",
+    "credits": 4,
     "prereqs": [
       "ECSE 200",
       "ECSE 222",
@@ -204,7 +204,7 @@
     "department": "ECSE",
     "code": "331",
     "title": "Electronics",
-    "credits": "4",
+    "credits": 4,
     "prereqs": [
       "ECSE 310"
     ],
@@ -213,9 +213,9 @@
   },
   {
     "department": "HSS",
-    "code": "1",
+    "code": 1,
     "title": "Humanities & Social Sciences #1",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "REQUIRED"
@@ -235,7 +235,7 @@
     "department": "ECSE",
     "code": "308",
     "title": "Intro. Comm. Sys. & Networks",
-    "credits": "4",
+    "credits": 4,
     "prereqs": [
       "ECSE 205",
       "ECSE 206"
@@ -247,7 +247,7 @@
     "department": "CCOM",
     "code": "206",
     "title": "Communication in Engineering",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "REQUIRED"
@@ -256,7 +256,7 @@
     "department": "ECSE",
     "code": "354",
     "title": "Electromagnetic Wave Propagation",
-    "credits": "4",
+    "credits": 4,
     "prereqs": [
       "ECSE 251"
     ],
@@ -267,7 +267,7 @@
     "department": "FACC",
     "code": "300",
     "title": "Engineering Economy",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "REQUIRED"
@@ -276,7 +276,7 @@
     "department": "ECSE",
     "code": "458N1",
     "title": "Capstone Design Project",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "ECSE 211",
       "ECSE 324",
@@ -288,18 +288,18 @@
   },
   {
     "department": "TC",
-    "code": "1",
+    "code": "-1",
     "title": "Technical Complementary 1",
-    "credits": "4",
+    "credits": 4,
     "prereqs": [],
     "restrictions": [],
     "type": "TECHNICAL_COMPLEMENTARY"
   },
   {
     "department": "TC",
-    "code": "2",
+    "code": "-1",
     "title": "Technical Complementary 2",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "TECHNICAL_COMPLEMENTARY"
@@ -308,7 +308,7 @@
     "department": "ECSE",
     "code": "343",
     "title": "Numerical Methods in Engineering",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "ECSE 205",
       "COMP 250 or ECSE 250",
@@ -321,7 +321,7 @@
     "department": "Impact",
     "code": "X",
     "title": "Impact of Technology on Society",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "REQUIRED"
@@ -330,7 +330,7 @@
     "department": "ECSE",
     "code": "458N2",
     "title": "Capstone Design Project",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [
       "ECSE 458 N1"
     ],
@@ -339,18 +339,18 @@
   },
   {
     "department": "TC",
-    "code": "3",
+    "code": 3,
     "title": "Technical Complementary 3",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "TECHNICAL_COMPLEMENTARY"
   },
   {
     "department": "TC",
-    "code": "4",
+    "code": 4,
     "title": "Technical Complementary 4",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "TECHNICAL_COMPLEMENTARY"
@@ -359,7 +359,7 @@
     "department": "TC",
     "code": "5",
     "title": "Technical Complementary 5",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "TECHNICAL_COMPLEMENTARY"
@@ -368,7 +368,7 @@
     "department": "Elective",
     "code": "X",
     "title": "Elective Course",
-    "credits": "3",
+    "credits": 3,
     "prereqs": [],
     "restrictions": [],
     "type": "ELECTIVE"
@@ -377,7 +377,7 @@
     "department": "FACC",
     "code": "400",
     "title": "Engineering Professional Practice",
-    "credits": "1",
+    "credits": 1,
     "prereqs": [
       "FACC 100",
       "FACC 250",
@@ -390,7 +390,7 @@
     "department": "ECSE",
     "code": "403",
     "title": "Control",
-    "credits": "4",
+    "credits": 4,
     "prereqs": ["ECSE 307"],
     "restrictions": ["ECSE 404", "ECSE 493"],
     "type": "TECHNICAL_COMPLEMENTARY"

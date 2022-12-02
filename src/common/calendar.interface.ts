@@ -59,7 +59,7 @@ export type Minors = keyof typeof MinorsText;
 
 export interface CourseInfo {
   department: Departments;
-  code: number;
+  code: string;
   title: string;
   credits: number;
   prereqs: string[];

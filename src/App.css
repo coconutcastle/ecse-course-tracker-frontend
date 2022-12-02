@@ -203,17 +203,29 @@ body {
 
 button:hover {
   opacity: 70% !important;
+  transition: opacity .3s ease, background-color .3s ease;
+  /* transition: background-color .3s ease; */
+}
+
+.degree-button:hover {
+  opacity: 80%;
   transition: opacity .3s ease;
 }
 
 .lowkey-button:hover {
   background-color: #8f78a2;
-  transition: opacity .3s ease;
 }
 
 .lowkey-button-white-background:hover {
   background-color: #c6b6d3;
-  transition: opacity .3s ease;
+}
+
+.drop-arrow {
+  color: white;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 59.3%;
 }
 
 /* .TextField {
