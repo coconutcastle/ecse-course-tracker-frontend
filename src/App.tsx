@@ -41,9 +41,9 @@ const App: React.FC = () => {
         <Route path="/login" element={<LoginPage allUsers={allUsers} setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} />
         <Route path="/create" element={<CreateAccountPage setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} />
         <Route path="/programs" element={<MajorsAndMinorsPage />} />
-        {(isLoggedIn && user) && <Route path="/profile" element={<ProfilePage user={user}/>} />}
+        {(isLoggedIn && user) && <Route path="/profile" element={<ProfilePage user={user} setUser={setUser} />} />}
         <Route path="/curriculum" element={<CurriculumPage />} />
-        {(isLoggedIn && user) && <Route path="/visualizer" element={<DegreeVisualizerPage user={user} />} />}
+        {(isLoggedIn && user) && <Route path="/visualizer" element={<DegreeVisualizerPage user={user} setUser={setUser} />} />}
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     

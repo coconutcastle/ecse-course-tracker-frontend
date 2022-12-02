@@ -75,7 +75,6 @@ export const AddSemesterModal = ({ isOpen, toggle, numberSemesters, modifySemest
                     <Button
                       className='p-2'
                       style={{ backgroundColor: '#9E86B1', border: 'none', opacity: values.semester === Seasons[Seasons.FALL] ? '70%' : '100% ' }}
-                      on
                       onClick={() => setFieldValue('semester', Seasons[Seasons.FALL])}>
                       <div className='button-text'>FALL</div>
                     </Button>

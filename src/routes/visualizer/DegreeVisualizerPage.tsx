@@ -10,18 +10,18 @@ import { MdCheckCircle } from 'react-icons/md';
 
 interface DegreeVisualizerPageProps {
   user: UserInfo;
+  setUser: (newUser: UserInfo) => void;
 }
 
-export const DegreeVisualizerPage = ({ user }: DegreeVisualizerPageProps) => {
-  // const [semesters, setSemesters] = useState<SemesterInfo[]>(Object.values(JSON.parse(JSON.stringify(courseData))));
-  const [semesters, setSemesters] = useState<SemesterInfo[]>(user.semesters);
+export const DegreeVisualizerPage = ({ user, setUser }: DegreeVisualizerPageProps) => {
   const [allCourses, setAllCourses] = useState<CourseInfo[]>(JSON.parse(JSON.stringify(courses)))
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [accumulatedCredits, setAccumulatedCredits] = useState<number | undefined>();
   const navigate = useNavigate();
 
   const modifySemesters = (index: number, isDelete: boolean, season?: Seasons, year?: number) => {
-    const newSemesters = [...semesters];
+    const { semesters, ...info } = user;
+    const newSemesters: SemesterInfo[] = [...semesters];
     if (isDelete) {
       newSemesters.splice(index, 1);
     } else if (season && year) {
@@ -31,23 +31,24 @@ export const DegreeVisualizerPage = ({ user }: DegreeVisualizerPageProps) => {
         courses: []
       });
     };
-    setSemesters(newSemesters);
+    setUser({...info, semesters: newSemesters});
   };
 
   const modifyCourse = (semesterIndex: number, isDelete: boolean, courseIndex: number, newCourse?: CourseInfo) => {
-    const newSemesters = [...semesters];
+    const { semesters, ...info } = user;
+    const newSemesters: SemesterInfo[] = [...semesters];
     console.log('modifying', semesterIndex, courseIndex, newCourse)
     if (isDelete) {
       (newSemesters[semesterIndex].courses).splice(courseIndex, 1);
     } else if (newCourse) {
       (newSemesters[semesterIndex].courses).splice(courseIndex, 1, newCourse);   //use length as index if adding a course  
     };
-    setSemesters(newSemesters)
+    setUser({...info, semesters: newSemesters});
   };
 
   useEffect(() => {
     var credits = 0;
-    semesters.forEach((semester: SemesterInfo) => {
+    (user.semesters).forEach((semester: SemesterInfo) => {
       semester.courses.forEach((course: CourseInfo) => {
         if (CourseStateText[course.state] === CourseStateText.COMPLETED) {
           credits += course.credits;
@@ -55,7 +56,7 @@ export const DegreeVisualizerPage = ({ user }: DegreeVisualizerPageProps) => {
       });
     });
     setAccumulatedCredits(credits)
-  }, [semesters])
+  }, [user])
 
   return (
     <>
@@ -89,7 +90,7 @@ export const DegreeVisualizerPage = ({ user }: DegreeVisualizerPageProps) => {
             {`${accumulatedCredits}/140 Credits`}
           </div>
         </div>
-        <Calendar semesters={semesters} allCourses={allCourses} modifySemesters={modifySemesters} modifyCourse={modifyCourse} />
+        <Calendar semesters={user.semesters} allCourses={allCourses} modifySemesters={modifySemesters} modifyCourse={modifyCourse} />
         <div className='d-flex flex-row justify-content-center align-items-center' style={{ marginTop: '40px' }}>
           <button className="landing-button"
           onClick={() => {

@@ -11,10 +11,9 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import { Field, Form, Formik, ErrorMessage } from 'formik';
 
-
-
 interface ProfilePageProps {
   user: UserInfo;
+  setUser: (newUser: UserInfo) => void;
 }
 
 interface ProfileFormFields {
@@ -26,23 +25,7 @@ interface ProfileFormFields {
   minor: Minors[];
 }
 
-const MenuProps = {
-  PaperProps: {
-    sx: {
-      "& .MuiMenuItem-root.Mui-selected": {
-        backgroundColor: "#c6b6d3"
-      },
-      "& .MuiMenuItem-root:hover": {
-        backgroundColor: "#c6b6d3"
-      },
-      "& .MuiMenuItem-root.Mui-selected:hover": {
-        backgroundColor: "#c6b6d3"
-      }
-    }
-  }
-}
-
-export const ProfilePage = ({ user }: ProfilePageProps) => {
+export const ProfilePage = ({ user, setUser }: ProfilePageProps) => {
   const [passwordVisible, setPasswordVisible] = useState<boolean>(false);
   const [updating, setUpdating] = useState<boolean>(false);
   const [newUserInfo, setNewUserInfo] = useState<ProfileFormFields>({
@@ -90,6 +73,15 @@ export const ProfilePage = ({ user }: ProfilePageProps) => {
               setTimeout(() => {
                 check.style.opacity = '0%';
                 setNewUserInfo(values);
+                setUser({
+                  firstName: values.firstName,
+                  lastName: values.lastName,
+                  email: values.email,
+                  password: values.password,
+                  major: values.major,
+                  minor: values.minor,
+                  semesters: user.semesters
+                })
                 setUpdating(false);
               }, 2000);
             };
@@ -100,7 +92,11 @@ export const ProfilePage = ({ user }: ProfilePageProps) => {
                 <div className='course-info-text fw-bold col-4'>First Name: </div>
                 <div className='course-info-text col-8'>{
                   updating ? (
-                    <Field name='firstName' type='text' placeholder="First Name" className='text-field' style={{ backgroundColor: 'white', height: '40px' }} />
+                    <>
+                      <Field name='firstName' type='text' placeholder="First Name" className='text-field' style={{ backgroundColor: 'white', height: '40px' }} />
+                      <ErrorMessage name="firstName" className="text-field-error" component="div" />
+                    </>
+                    
                   ) : (`${newUserInfo.firstName}`)
                 }</div>
               </div>
@@ -108,7 +104,11 @@ export const ProfilePage = ({ user }: ProfilePageProps) => {
                 <div className='course-info-text fw-bold col-4'>Last Name: </div>
                 <div className='course-info-text col-8'>{
                   updating ? (
-                    <Field name='lastName' type='text' placeholder="Last Name" className='text-field' style={{ backgroundColor: 'white', height: '40px' }} />
+                    <>
+                      <Field name='lastName' type='text' placeholder="Last Name" className='text-field' style={{ backgroundColor: 'white', height: '40px' }} />
+                      <ErrorMessage name="lastName" className="text-field-error" component="div" />
+                    </>
+                    
                   ) : (`${newUserInfo.lastName}`)
                 }</div>
               </div>
@@ -116,7 +116,11 @@ export const ProfilePage = ({ user }: ProfilePageProps) => {
                 <div className='course-info-text fw-bold col-4'>Email: </div>
                 <div className='course-info-text col-8'>{
                   updating ? (
-                    <Field name='email' type='text' placeholder="Email" className='text-field' style={{ backgroundColor: 'white', height: '40px' }} />
+                    <>
+                      <Field name='email' type='text' placeholder="Email" className='text-field' style={{ backgroundColor: 'white', height: '40px' }} />
+                      <ErrorMessage name="email" className="text-field-error" component="div" />
+                    </>
+                    
                   ) : (`${newUserInfo.email}`)
                 }</div>
               </div>
@@ -138,10 +142,31 @@ export const ProfilePage = ({ user }: ProfilePageProps) => {
                 <div className='course-info-text fw-bold col-4'>Major: </div>
                 <div className='course-info-text col-8'>{
                   updating ? (
-                    <Field name='major' as='select' >
-                      {Object.keys(MajorsText).map((major: string, index) =>
-                        <option value={major} key={index}>{MajorsText[major as Majors]}</option>)}
-                    </Field>
+                    <Select
+                      value={values.major}
+                      onChange={(event: SelectChangeEvent<typeof values.major>, newValue) => {
+                        const { target: { value }, } = event;
+                        setFieldValue('major', value);
+                      }}
+                      input={<OutlinedInput label="Tag" />}
+                      renderValue={(selected) => MajorsText[selected as Majors]}
+                      sx={{
+                        "&:hover": {
+                          "&& fieldset": {
+                            border: '3px solid #8f78a2'
+                          }
+                        },
+                        "& fieldset": {
+                          border: '3px solid #8f78a2'
+                        }
+                      }}
+                    >
+                      {Object.keys(MajorsText).map((major: string, index) => (
+                        <MenuItem key={index} value={major}>
+                          <ListItemText primary={MajorsText[major as Majors]} />
+                        </MenuItem>
+                      ))}
+                    </Select>
                   ) : MajorsText[newUserInfo.major]}</div>
               </div>
               <div className='row pb-3'>
@@ -157,7 +182,6 @@ export const ProfilePage = ({ user }: ProfilePageProps) => {
                       }}
                       input={<OutlinedInput label="Tag" />}
                       renderValue={(selected) => 'Minors'}
-                      // MenuProps={MenuProps}
                       sx={{
                         "&:hover": {
                           "&& fieldset": {
@@ -168,14 +192,14 @@ export const ProfilePage = ({ user }: ProfilePageProps) => {
                           border: '3px solid #8f78a2'
                         },
                         "& .MuiSelect": {
-                          borderWidth: '3px' 
+                          borderWidth: '3px'
                         }
                       }}
                     >
                       {Object.keys(MinorsText).map((minor: string, index) => (
                         <MenuItem key={index} value={minor}>
                           <Checkbox checked={(values.minor).includes(minor as Minors)} />
-                          <ListItemText primary={minor} />
+                          <ListItemText primary={MinorsText[minor as Minors]} />
                         </MenuItem>
                       ))}
                     </Select>
@@ -194,7 +218,6 @@ export const ProfilePage = ({ user }: ProfilePageProps) => {
                   </button>
                   <button className="landing-button ms-2" type='submit' style={{ width: '200px' }}
                     onClick={() => {
-                      console.log('clicked')
                       const check = document.getElementById("save-confirmation-check");
                       if (check) {
                         check.style.opacity = '100%';
