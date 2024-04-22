@@ -4,7 +4,9 @@ Frontend for the ECSE Course Tracker application for ECSE 446 Project group 3.
 Beta: https://celadon-lolly-615176.netlify.app/
 
 Login using:
+
 __Email:__ john.doe@gmail.com
+
 __Password:__ 123
 
 ## Development
